@@ -1,0 +1,19 @@
+stories:
+
+env:
+  url: https://app.asyncy.com
+  github_webhook_url: https://github.webhooks.app.asyncy.com
+  github_keys_ssh_pem:
+  github_webhook_secret:
+  github_events:
+    - create        # Run CI -- [FUTURE] to AB test stories
+    - delete        # [FUTURE] delete forks
+    - pull_request  # Run CI -- [FUTURE] to AB test stories
+    - push          # Run CI
+    - repository    # Could have been deleted or moved
+
+  github:
+    integration_id:
+    pem:
+    webhook_secret: &github_webhook_secret
+    user_agent: Asyncy Hub
