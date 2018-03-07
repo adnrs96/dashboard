@@ -13,6 +13,11 @@
     /:app              Single Application view
 ```
 
+# `/gh/:owner`
+> List applications
+
+Drag-drop story running https://cl.ly/3R2G3e3E121m
+
 # `/gh/:owner/+`
 > Create new Application
 
@@ -36,7 +41,6 @@ Submit -> {stories/apps/new}
 > List recent story executions
 
 [Type: Search Bar] to filter by states and other arguments
-
 
 
 #### Tab: Metrics
@@ -88,6 +92,12 @@ Sections
   - [Button: Add Domain] -> {stories/domains/new}
 - Maintenance Mode
   - [Toggle: Turn application off]
+- Log Drains (LogDNA)
+- Error Handling (Sentry)
+- Notifications
+  - Slack
+  - Webhooks
+  - Email
 - Delete App
   - [Button: Delete application] -> Model
     - [Type: Application name]
