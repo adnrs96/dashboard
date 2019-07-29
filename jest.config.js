@@ -26,5 +26,10 @@ module.exports = {
     }
   },
   collectCoverage: true,
-  collectCoverageFrom: ['src/**/*.{js,ts,vue}']
+  collectCoverageFrom: [
+    'src/**/*.{js,ts,vue}',
+    '!src/(registerServiceWorker|main).ts',
+    '!src/store/index.ts',
+    '!src/store/modules/index.ts'
+  ]
 }
