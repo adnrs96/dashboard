@@ -67,7 +67,7 @@ jobs:
       - persist_to_workspace:
           root: ~/project
           paths:
-            - omg
+            - dashboard
 
 workflows:
   version: 2
