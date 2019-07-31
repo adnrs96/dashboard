@@ -1,0 +1,98 @@
+version: 2
+
+env: &env
+  working_directory: ~/project/dashboard
+  docker:
+    - image: circleci/node:latest
+
+jobs:
+  install:
+    <<: *env
+    steps:
+      - checkout
+      - restore_cache:
+          keys:
+            - v1-dependencies-dashboard-{{ checksum "yarn.lock" }}
+            - v1-dependencies-dashboard
+      - run:
+          name: Installing dependencies
+          command: yarn
+      - save_cache:
+          key: v1-dependencies-dashboard-{{ checksum "yarn.lock" }}
+          paths:
+            - ~/.cache/yarn
+            - node_modules
+      - persist_to_workspace:
+          root: ~/project
+          paths:
+            - dashboard
+
+  lint:
+    <<: *env
+    steps:
+      - attach_workspace:
+          at: ~/project
+      - run:
+          name: Linting
+          command: yarn lint
+
+  test:
+    <<: *env
+    steps:
+      - attach_workspace:
+          at: ~/project
+      - run:
+          name: Testing with coverage
+          command: yarn coverage:unit
+      - run:
+          name: Uploading to Codecov
+          command: bash <(curl -s https://codecov.io/bash)
+
+  build:
+    <<: *env
+    steps:
+      - attach_workspace:
+          at: ~/project
+      - restore_cache:
+          keys:
+            - v1-dist-dashboard-{{ .Environment.CIRCLE_BRANCH }}-{{ .Environment.CIRCLE_SHA1 }}
+            - v1-dist-dashboard
+      - run:
+          name: Building
+          command: yarn build
+      - save_cache:
+          key: v1-dist-dashboard-{{ .Environment.CIRCLE_BRANCH }}-{{ .Environment.CIRCLE_SHA1 }}
+          paths:
+            - dist
+      - persist_to_workspace:
+          root: ~/project
+          paths:
+            - dashboard
+
+workflows:
+  version: 2
+
+  ci:
+    jobs:
+      - install:
+          filters:
+            tags:
+              only: /.*/
+      - lint:
+          filters:
+            tags:
+              only: /.*/
+          requires:
+            - install
+      - test:
+          filters:
+            tags:
+              only: /.*/
+          requires:
+            - install
+      - build:
+          filters:
+            tags:
+              only: /.*/
+          requires:
+            - install
