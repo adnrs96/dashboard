@@ -30,6 +30,7 @@ module.exports = {
     'src/**/*.{js,ts,vue}',
     '!src/(registerServiceWorker|main).ts',
     '!src/store/index.ts',
-    '!src/store/modules/index.ts'
+    '!src/store/modules/index.ts',
+    '!src/plugins/**/*.{js,ts,vue}'
   ]
 }
