@@ -1,7 +1,9 @@
 # Storyscript Dashboard
 
-[![CircleCI](https://img.shields.io/circleci/build/gh/storyscript/dashboard?label=CIRCLECI&style=for-the-badge)](https://circleci.com/gh/storyscript/dashboard)
-[![codecov](https://img.shields.io/codecov/c/gh/storyscript/dashboard?style=for-the-badge)](https://codecov.io/gh/storyscript/dashboard)
+[![Commitizen friendly](https://img.shields.io/badge/commitizen-friendly-brightgreen.svg)](http://commitizen.github.io/cz-cli/)
+[![Netlify Status](https://api.netlify.com/api/v1/badges/db988abe-5f0a-4ec5-8659-b1865035e9c9/deploy-status)](https://app.netlify.com/sites/musing-nobel-a05d19/deploys)
+[![CircleCI](https://circleci.com/gh/storyscript/dashboard.svg?style=svg)](https://circleci.com/gh/storyscript/dashboard)
+[![codecov](https://codecov.io/gh/storyscript/dashboard/branch/master/graph/badge.svg)](https://codecov.io/gh/storyscript/dashboard)
 
 ## Project setup
 
