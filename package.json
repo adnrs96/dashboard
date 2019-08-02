@@ -6,8 +6,7 @@
     "serve": "vue-cli-service serve",
     "build": "vue-cli-service build",
     "lint": "vue-cli-service lint",
-    "test:unit": "vue-cli-service test:unit",
-    "coverage:unit": "vue-cli-service test:unit --coverage",
+    "test": "vue-cli-service test:unit --coverage",
     "commit": "git-cz",
     "release": "standard-version"
   },
