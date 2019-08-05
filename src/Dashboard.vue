@@ -1,6 +1,6 @@
 <template>
   <div id="dashboard">
-    <!-- @TODO: Replace this with a specific Unauthorized component -->
+    <!-- @DOTO: Replace this with a specific Unauthorized component -->
     <div v-if="!initialized || !isUserLoggedIn">
       <div v-if="!initialized">Loading</div>
       <div v-else>
