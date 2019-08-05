@@ -14,6 +14,11 @@ services:
 
   database:
     image: postgres:10
+    healthcheck:
+      test: ['CMD-SHELL', 'pg_isready -h localhost -U postgres']
+      interval: 3s
+      timeout: 2s
+      retries: 7
     depends_on:
       - reverse_proxy
     environment:
@@ -31,6 +36,42 @@ services:
       - 'traefik.network=storynet'
       - 'traefik.enable=true'
 
+  graphql:
+    image: asyncy/platform-graphql:c8569f7
+    depends_on:
+      - database
+    command: ['./wait-for-postgres.sh', 'database', 'node', 'server.js']
+    ports:
+      - 5000:5000
+    environment:
+      - NODE_ENV=development
+      - DATABASE_URL=postgresql://asyncy_authenticator:PLEASE_CHANGE_ME@database/asyncy
+      - ROOT_DATABASE_URL=postgresql://postgres:postgres@database/asyncy
+    networks:
+      - storynet
+    labels:
+      - 'traefik.enable=true'
+      - 'traefik.port=5000'
+      - 'traefik.network=storynet'
+      - 'traefik.frontend.rule=Host:graphql.docker.localhost'
+
+  api:
+    image: asyncy/dashboard-api:e5c0438
+    depends_on:
+      - graphql
+    networks:
+      - storynet
+    labels:
+      - 'traefik.enable=true'
+      - 'traefik.port=8090'
+      - 'traefik.network=storynet'
+      - 'traefik.frontend.rule=Host:api-dashboard.docker.localhost'
+    environment:
+      - NODE_ENV:production
+      - JWT_NAME:sadn
+      - JWT_SECRET:@Jf3zt74D^ZNkz?EzrzFrwssT&7w+wBPWmW_Axsq#4Z*V+zB/@X(fY83^gh8}Hq;wW~%^)`UJfSte{3mwP%<d(Csr(M^6n&\6]XU#M@7xzx&E(V
+      - PG_CONNECTION_STRING=postgresql://postgres:postgres@database/asyncy
+
   database_explorer:
     image: dpage/pgadmin4
     depends_on:
@@ -47,25 +88,6 @@ services:
       - pgadmin-data:/var/lib/pgadmin
     networks:
       - storynet
-
-  graphql:
-    image: asyncy/platform-graphql
-    command: --init
-    depends_on:
-      - database
-    ports:
-      - 5000:5000
-    environment:
-      - NODE_ENV=development
-      - DATABASE_URL=postgres://asyncy_authenticator:PLEASE_CHANGE_ME@database/asyncy
-      - ROOT_DATABASE_URL=postgres://postgres:postgres@database/asyncy
-    networks:
-      - storynet
-    labels:
-      - 'traefik.enable=true'
-      - 'traefik.port=5000'
-      - 'traefik.network=storynet'
-      - 'traefik.frontend.rule=Host:graphql.docker.localhost'
 
 volumes:
   postgres-data:
