@@ -44,6 +44,7 @@
     "eslint": "^5.16.0",
     "eslint-plugin-vue": "^5.0.0",
     "graphql-tag": "^2.10.1",
+    "husky": "^3.0.2",
     "jest-transform-graphql": "^2.1.0",
     "lint-staged": "^8.1.5",
     "raven-js": "^3.27.2",
@@ -58,8 +59,7 @@
   },
   "husky": {
     "hooks": {
-      "pre-commit": "lint-staged",
-      "prepare-commit-msg": "exec < /dev/tty && git cz --hook"
+      "pre-commit": "lint-staged"
     }
   },
   "lint-staged": {
