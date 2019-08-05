@@ -5,6 +5,7 @@
       <div v-if="!initialized">Loading</div>
       <div v-else>
         Login
+        <!-- <s-text p="1" weight="bold">Toto</s-text> -->
       </div>
     </div>
     <router-view v-else />
@@ -14,8 +15,13 @@
 <script lang="ts">
 import { Component, Vue, Watch } from 'vue-property-decorator'
 import { Action, Getter } from 'vuex-class'
+import SText from '@/components/Text.vue'
 
-@Component({})
+@Component({
+  components: {
+    SText
+  }
+})
 export default class Dashboard extends Vue {
   @Action('fetchUser') private fetchUser!: () => Promise<boolean>
   private initialized: boolean = false
