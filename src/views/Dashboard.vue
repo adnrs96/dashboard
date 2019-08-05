@@ -1,16 +1,16 @@
 <template>
   <div class="dashboard-container">
-    <!-- <loader /> -->
+    <!-- <s-loader /> -->
   </div>
 </template>
 
 <script lang="ts">
 import { Component, Vue } from 'vue-property-decorator'
-import Loader from '@/components/Loader.vue'
+import SLoader from '@/components/Loader.vue'
 
 @Component({
   components: {
-    Loader
+    SLoader
   }
 })
 export default class Home extends Vue { }

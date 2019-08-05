@@ -107,7 +107,9 @@
 <script lang="ts">
 import { Component, Vue } from 'vue-property-decorator'
 
-@Component({})
+@Component({
+  name: 'SLoader'
+})
 export default class Loader extends Vue {
 
 }
