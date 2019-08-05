@@ -1,17 +1,6 @@
 version: '3.7'
 
 services:
-  reverse_proxy:
-    image: traefik
-    command: --api --docker
-    ports:
-      - 80:80
-      - 8081:8080
-    networks:
-      - storynet
-    volumes:
-      - /var/run/docker.sock:/var/run/docker.sock
-
   database:
     image: postgres:10
     healthcheck:
@@ -19,8 +8,6 @@ services:
       interval: 3s
       timeout: 2s
       retries: 7
-    depends_on:
-      - reverse_proxy
     environment:
       - POSTGRES_USER=postgres
       - POSTGRES_PASSWORD=postgres
@@ -31,10 +18,6 @@ services:
       - storynet
     volumes:
       - postgres-data:/var/lib/postgresql/data
-    labels:
-      - 'traefik.frontend.rule=Host:pg.docker.localhost'
-      - 'traefik.network=storynet'
-      - 'traefik.enable=true'
 
   graphql:
     image: asyncy/platform-graphql:c8569f7
@@ -49,45 +32,27 @@ services:
       - ROOT_DATABASE_URL=postgresql://postgres:postgres@database/asyncy
     networks:
       - storynet
-    labels:
-      - 'traefik.enable=true'
-      - 'traefik.port=5000'
-      - 'traefik.network=storynet'
-      - 'traefik.frontend.rule=Host:graphql.docker.localhost'
 
   api:
-    image: asyncy/dashboard-api:e5c0438
+    image: asyncy/dashboard-api:v0.1.1-5-g300bd97
     depends_on:
       - graphql
     networks:
       - storynet
-    labels:
-      - 'traefik.enable=true'
-      - 'traefik.port=8090'
-      - 'traefik.network=storynet'
-      - 'traefik.frontend.rule=Host:api-dashboard.docker.localhost'
+    ports:
+      - 8090:8090 # Make this port available, this is the only one working
     environment:
-      - NODE_ENV:production
-      - JWT_NAME:sadn
-      - JWT_SECRET:@Jf3zt74D^ZNkz?EzrzFrwssT&7w+wBPWmW_Axsq#4Z*V+zB/@X(fY83^gh8}Hq;wW~%^)`UJfSte{3mwP%<d(Csr(M^6n&\6]XU#M@7xzx&E(V
+      - JWT_NAME=sadn
+      - JWT_SECRET=@Jf3zt74D^ZNkz?EzrzFrwssT&7w+wBPWmW_Axsq#4Z*V+zB/@X(fY83^gh8}Hq;wW~%^)`UJfSte{3mwP%<d(Csr(M^6n&\6]XU#M@7xzx&E(V
       - PG_CONNECTION_STRING=postgresql://postgres:postgres@database/asyncy
-
-  database_explorer:
-    image: dpage/pgadmin4
-    depends_on:
-      - database
-    environment:
-      - PGADMIN_DEFAULT_EMAIL=dev@storyscript.io
-      - PGADMIN_DEFAULT_PASSWORD=toto
-    labels:
-      - 'traefik.frontend.rule=Host:pgadmin.docker.localhost'
-      - 'traefik.network=storynet'
-      - 'traefik.enable=true'
-      - 'traefik.port=80'
-    volumes:
-      - pgadmin-data:/var/lib/pgadmin
-    networks:
-      - storynet
+      - AUTH_DEFAULT_REFERER=http://localhost:8080/signin
+      - API_SSL=false
+      - API_BASE_URL=localhost:8090
+      - APP_BASE_URL=localhost
+      - GH_APP_ID=
+      - GH_CLIENT_ID=
+      - GH_CLIENT_SECRET=
+      - GH_APP_PEM=
 
 volumes:
   postgres-data:
