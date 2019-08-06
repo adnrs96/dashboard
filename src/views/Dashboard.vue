@@ -1,7 +1,6 @@
 <template>
   <div class="dashboard-container">
     <apps-table />
-    <!-- <s-loader /> -->
     <a
       href="#"
       @click.stop="logoutUser"
@@ -11,14 +10,12 @@
 
 <script lang="ts">
 import { Component, Vue } from 'vue-property-decorator'
-import SLoader from '@/components/Loader.vue'
 import AppsTable from '@/components/AppsTable.vue'
 import axios from 'axios'
 import { Action, Getter } from 'vuex-class'
 
 @Component({
   components: {
-    SLoader,
     AppsTable
   }
 })
