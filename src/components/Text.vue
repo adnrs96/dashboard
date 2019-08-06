@@ -1,7 +1,7 @@
 <template>
   <component
     :is="tag"
-    :class="[`text-${size}`, `font-${this.weight === 'regular' ? 'normal' : this.weight}`, `leading-${lineHeight}`, 'font-body']"
+    :class="[`text-${size}`, `text-${color}`, `font-${this.weight === 'regular' ? 'normal' : this.weight}`, `leading-${lineHeight}`, 'font-body']"
   >
     <slot />
   </component>
@@ -15,9 +15,7 @@ import { Component, Vue, Prop } from 'vue-property-decorator'
 })
 export default class Text extends Vue {
   @Prop({ type: Boolean, default: false }) readonly span!: boolean
-
   @Prop({ type: Boolean, default: false }) readonly li!: boolean
-
   @Prop({
     type: String,
     default: undefined,
@@ -36,6 +34,12 @@ export default class Text extends Vue {
     default: 'regular',
     validator: v => ['regular', 'medium', 'semibold', 'bold'].includes(v)
   }) readonly weight!: string
+
+  @Prop({
+    type: String,
+    default: 'black',
+    validator: x => ['white', 'black'].includes(x)
+  }) readonly color !: string
 
   get tag (): string {
     return this.span ? 'span' : this.li ? 'li' : this.head ? `h${this.head}` : 'p'
