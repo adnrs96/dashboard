@@ -2,7 +2,7 @@
   <component
     :is="'button'"
     class="flex items-center rounded-10"
-    :class="[`bg-${black ? 'gray-100' : 'white'}`, `${black ? '': 'border border-solid border-gray-30'}`]"
+    :class="[`bg-${black ? 'gray-100 hover:bg-gray-90' : 'white hover:bg-gray-10'}`, `${black ? '': 'border border-solid border-gray-30'}`]"
   >
     <s-text
       p="2"
