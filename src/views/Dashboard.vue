@@ -1,17 +1,25 @@
 <template>
   <div class="dashboard-container">
-    <!-- <s-text p="2" weight="semibold">Toto</s-text> -->
+    <apps-table />
+    <a
+      href="#"
+      @click.stop="logoutUser"
+    >Logout</a>
   </div>
 </template>
 
 <script lang="ts">
 import { Component, Vue } from 'vue-property-decorator'
-// import SText from '@/components/Text.vue'
+import AppsTable from '@/components/AppsTable.vue'
+import axios from 'axios'
+import { Action, Getter } from 'vuex-class'
 
 @Component({
   components: {
-    // SText
+    AppsTable
   }
 })
-export default class Home extends Vue { }
+export default class Home extends Vue {
+  @Action('logout') private logoutUser!: () => Promise<boolean>
+}
 </script>

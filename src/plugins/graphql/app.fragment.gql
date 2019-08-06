@@ -1,0 +1,6 @@
+fragment App on App {
+  name
+  owner {
+    username
+  }
+}
