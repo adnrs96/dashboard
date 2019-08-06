@@ -19,10 +19,10 @@ const defaultOptions = {
   tokenName: AUTH_TOKEN,
   persisting: false,
   websocketsOnly: false,
-  ssr: false
+  ssr: true
 }
 
-interface MyApolloClient<TCacheShape> extends ApolloClient<TCacheShape> {
+export interface MyApolloClient<TCacheShape> extends ApolloClient<TCacheShape> {
   wsClient: SubscriptionClient
 }
 

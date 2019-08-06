@@ -1,5 +1,4 @@
 import axios from 'axios'
-import { setupMaster } from 'cluster'
 
 const state = {
   ownerUuid: undefined,
@@ -14,7 +13,7 @@ const getters = {
     return state.token
   },
   isUserLoggedIn (state: any) {
-    return state.ownerUuid && state.token
+    return state.ownerUuid !== undefined && state.token !== undefined
   }
 }
 
@@ -36,6 +35,14 @@ const actions = {
           commit('setUser', { ownerUuid: undefined, token: undefined })
           resolve(false)
         }
+      }).catch(() => resolve(false))
+    })
+  },
+  logoutUser ({ commit }: { commit: Function }) {
+    return new Promise(resolve => {
+      axios.delete(`${process.env.VUE_APP_API_BASE_URL}user`, { withCredentials: true }).then((res) => {
+        commit('setUser', { ownerUuid: undefined, token: undefined })
+        resolve(true)
       }).catch(() => resolve(false))
     })
   }

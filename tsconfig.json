@@ -11,13 +11,15 @@
     "allowSyntheticDefaultImports": true,
     "sourceMap": true,
     "baseUrl": ".",
-    "types": ["webpack-env", "jest", "vue-cli-plugin-apollo"],
+    "types": ["webpack-env", "jest", "vue-cli-plugin-apollo", "vue-apollo"],
+    "resolveJsonModule": true,
     "paths": {
       "@/*": ["src/*"]
     },
     "lib": ["esnext", "dom", "dom.iterable", "scripthost"]
   },
   "include": [
+    "src/*.vue",
     "src/**/*.ts",
     "src/**/*.tsx",
     "src/**/*.vue",

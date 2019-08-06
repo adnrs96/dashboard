@@ -1,0 +1,9 @@
+#import "./app.fragment.gql"
+
+query allApps {
+  allApps {
+    nodes{
+      ...App
+    }
+  }
+}
