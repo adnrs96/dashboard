@@ -2,9 +2,9 @@ module.exports = {
   verbose: !process.env.NODE_ENV === 'production',
   moduleFileExtensions: ['js', 'jsx', 'json', 'vue', 'ts', 'tsx'],
   transform: {
+    '^.+\\.(gql|graphql)$': 'jest-transform-graphql',
     '^.+\\.vue$': 'vue-jest',
-    '.+\\.(css|styl|less|sass|scss|svg|png|jpg|ttf|woff|woff2)$':
-      'jest-transform-stub',
+    '.+\\.(css|styl|less|sass|scss|svg|png|jpg|ttf|woff|woff2)$': 'jest-transform-stub',
     '^.+\\.tsx?$': 'ts-jest'
   },
   transformIgnorePatterns: ['node_modules'],
