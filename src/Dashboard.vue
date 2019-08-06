@@ -3,10 +3,7 @@
     <!-- @DOTO: Replace this with a specific Unauthorized component -->
     <div v-if="!initialized || !isUserLoggedIn">
       <div v-if="!initialized">Loading</div>
-      <div v-else>
-        Login
-        <!-- <s-text p="1" weight="bold">Toto</s-text> -->
-      </div>
+      <div v-else>Login</div>
     </div>
     <router-view v-else />
   </div>
@@ -15,13 +12,8 @@
 <script lang="ts">
 import { Component, Vue, Watch } from 'vue-property-decorator'
 import { Action, Getter } from 'vuex-class'
-import SText from '@/components/Text.vue'
 
-@Component({
-  components: {
-    SText
-  }
-})
+@Component({})
 export default class Dashboard extends Vue {
   @Action('fetchUser') private fetchUser!: () => Promise<boolean>
   private initialized: boolean = false
