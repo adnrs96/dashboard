@@ -1,4 +1,4 @@
 import { createProvider } from '@/plugins/vue-apollo'
-import Raven from '@/plugins/sentry'
+import Sentry from '@/plugins/sentry'
 
-export { createProvider, Raven }
+export { createProvider, Sentry }
