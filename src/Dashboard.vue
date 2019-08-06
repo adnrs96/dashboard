@@ -4,6 +4,12 @@
     <div v-if="!initialized || !isUserLoggedIn">
       <div v-if="!initialized">Loading</div>
       <div v-else>Login</div>
+      <s-button icon="github-o" black>Continue with GitHub</s-button>
+      <s-button icon="google-f" white />
+      <s-button icon="gitlab-o" />
+      <s-button>Toto</s-button>
+      <s-button white>Titi</s-button>
+      <s-button black>Tata</s-button>
     </div>
     <router-view v-else />
   </div>
@@ -12,8 +18,13 @@
 <script lang="ts">
 import { Component, Vue, Watch } from 'vue-property-decorator'
 import { Action, Getter } from 'vuex-class'
+import SButton from '@/components/Button.vue'
 
-@Component({})
+@Component({
+  components: {
+    SButton
+  }
+})
 export default class Dashboard extends Vue {
   @Action('fetchUser') private fetchUser!: () => Promise<boolean>
   private initialized: boolean = false

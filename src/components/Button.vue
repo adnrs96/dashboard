@@ -2,9 +2,16 @@
   <component
     :is="'button'"
     class="flex items-center rounded-10"
-    :class="[`bg-${black ? 'gray-100' : 'white'}`, `${white ? 'border boder-solid border-gray-30': ''}`]"
+    :class="[`bg-${black ? 'gray-100' : 'white'}`, `${black ? '': 'border border-solid border-gray-30'}`]"
   >
-    <s-text p="2" weight="semibold" :color="textColor" class="py-4 pl-4 pr-8" v-if="$slots.default">
+    <s-text
+      p="2"
+      weight="semibold"
+      :color="textColor"
+      class="py-4 pl-4"
+      :class="[`${icon ? 'pr-8' : 'pr-4'}`]"
+      v-if="$slots.default"
+    >
       <slot />
     </s-text>
     <s-icon
