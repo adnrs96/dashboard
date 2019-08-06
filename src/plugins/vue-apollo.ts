@@ -1,4 +1,3 @@
-import 'vue-cli-plugin-apollo/types'
 import Vue from 'vue'
 import VueApollo from 'vue-apollo'
 import { createApolloClient, restartWebsockets } from 'vue-cli-plugin-apollo/graphql-client'
