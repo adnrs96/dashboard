@@ -48,7 +48,7 @@ module.exports = {
       '4xl': '2.25rem',
       '5xl': '2.5rem'
     },
-    fontHeight: {
+    lineHeight: {
       '13': '.8125rem',
       '15': '.9375rem',
       '18': '1.125rem',

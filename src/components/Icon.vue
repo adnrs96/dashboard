@@ -2,7 +2,7 @@
   <div>
     <svg
       v-if="isActive('github-o')"
-      :class="`${classColor} fill-current`"
+      :class="[classColor, 'fill-current']"
       height="21"
       viewBox="0 0 19 21"
       width="19"
@@ -14,7 +14,7 @@
     </svg>
     <svg
       v-else-if="isActive('gitlab-o')"
-      :class="`${classColor} fill-current`"
+      :class="[classColor, 'fill-current']"
       width="18"
       height="17"
       viewBox="0 0 18 17"
@@ -28,7 +28,7 @@
     </svg>
     <svg
       v-else-if="isActive('google-f')"
-      :class="`${classColor} fill-current`"
+      :class="[classColor, 'fill-current']"
       width="17"
       height="18"
       viewBox="0 0 17 18"
