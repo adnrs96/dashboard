@@ -1,11 +1,10 @@
 import Vue from 'vue'
-import Raven from 'raven-js'
-import RavenVue from './wrappers/raven-js'
+import * as Sentry from '@sentry/browser'
+import * as Integrations from '@sentry/integrations'
 
-Raven.config(process.env.SENTRY_DSN || '', {
-  environment: process.env.NODE_ENV
+Sentry.init({
+  dsn: process.env.SENTRY_DSN || '',
+  integrations: [new Integrations.Vue({ Vue, attachProps: true })]
 })
-  .addPlugin(RavenVue, Vue)
-  .install()
 
-export default Raven
+export default Sentry
