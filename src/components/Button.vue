@@ -5,12 +5,12 @@
     :class="[`bg-${black ? 'gray-100 hover:bg-gray-90' : 'white hover:bg-gray-10'}`, `${black ? '': 'border border-solid border-gray-30'}`]"
   >
     <s-text
+      v-if="$slots.default"
       p="2"
       weight="semibold"
       :color="textColor"
       class="py-4 pl-4"
       :class="[`${icon ? 'pr-8' : 'pr-4'}`]"
-      v-if="$slots.default"
     >
       <slot />
     </s-text>
