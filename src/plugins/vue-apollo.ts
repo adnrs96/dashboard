@@ -4,7 +4,9 @@ import { createApolloClient, restartWebsockets } from 'vue-cli-plugin-apollo/gra
 import { ApolloClient } from 'apollo-client'
 import { SubscriptionClient } from 'subscriptions-transport-ws'
 
-Vue.use(VueApollo)
+if (!process || process.env.NODE_ENV !== 'test') {
+  Vue.use(VueApollo)
+}
 
 const AUTH_TOKEN = 'storyscript-dashboard'
 
@@ -52,7 +54,8 @@ export function createProvider (options = {}) {
 }
 
 // Manually call this when user log in
-export async function onLogin (apolloClient: MyApolloClient<unknown>, token: string) {
+export async function onLogin (apolloClient: MyApolloClient<unknown>, token: string | undefined) {
+  if (!apolloClient) return
   if (typeof localStorage !== 'undefined' && token) {
     localStorage.setItem(AUTH_TOKEN, token)
   }
@@ -67,6 +70,7 @@ export async function onLogin (apolloClient: MyApolloClient<unknown>, token: str
 
 // Manually call this when user log out
 export async function onLogout (apolloClient: MyApolloClient<unknown>) {
+  if (!apolloClient) return
   if (typeof localStorage !== 'undefined') {
     localStorage.removeItem(AUTH_TOKEN)
   }
@@ -77,4 +81,9 @@ export async function onLogout (apolloClient: MyApolloClient<unknown>) {
     // eslint-disable-next-line no-console
     console.log('%cError on cache reset (logout)', 'color: orange;', e.message)
   }
+}
+
+export default {
+  onLogin,
+  onLogout
 }

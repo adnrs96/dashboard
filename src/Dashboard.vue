@@ -14,9 +14,9 @@
 <script lang="ts">
 import { Component, Vue, Watch } from 'vue-property-decorator'
 import { Action, Getter } from 'vuex-class'
-import { onLogin, onLogout, MyApolloClient } from '@/plugins/vue-apollo'
+import ApolloPlugin, { MyApolloClient } from '@/plugins/vue-apollo'
 
-@Component({})
+@Component({ name: 'Dashboard' })
 export default class Dashboard extends Vue {
   @Action('fetchUser') private fetchUser!: () => Promise<boolean>
   private initialized: boolean = false
@@ -29,19 +29,20 @@ export default class Dashboard extends Vue {
   private getGraphQLToken!: string | undefined
 
   @Watch('isUserLoggedIn')
-  private userLoggedInWatcher () {
-    console.log('user logged in has changed value', this.isUserLoggedIn)
+  private async userLoggedInWatcher () {
     if (!this.isUserLoggedIn) {
       this.initialized = false
-      onLogout(this.$apollo.provider.defaultClient as MyApolloClient<unknown>)
+      const client = this.$apollo && this.$apollo.provider && this.$apollo.provider.defaultClient
+      await ApolloPlugin.onLogout(client as MyApolloClient<unknown>)
+      this.initialized = true
     }
   }
 
   created () {
-    this.fetchUser().then((isLoggedIn: boolean) => {
-      console.log(`user is ${isLoggedIn ? '' : 'not '}logged in`)
+    this.fetchUser().then(async (isLoggedIn: boolean) => {
       if (isLoggedIn) {
-        onLogin(this.$apollo.provider.defaultClient as MyApolloClient<unknown>, this.getGraphQLToken || '')
+        const client = this.$apollo && this.$apollo.provider && this.$apollo.provider.defaultClient
+        await ApolloPlugin.onLogin(client as MyApolloClient<unknown>, this.getGraphQLToken)
       }
       this.initialized = true
     })
