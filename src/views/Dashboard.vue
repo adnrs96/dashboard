@@ -3,7 +3,7 @@
     <apps-table />
     <a
       href="#"
-      @click.stop="logoutUser"
+      @click.stop="logout"
     >Logout</a>
   </div>
 </template>
@@ -20,6 +20,6 @@ import { Action, Getter } from 'vuex-class'
   }
 })
 export default class Home extends Vue {
-  @Action('logout') private logoutUser!: () => Promise<boolean>
+  @Action('logoutUser') private logout!: () => Promise<boolean>
 }
 </script>

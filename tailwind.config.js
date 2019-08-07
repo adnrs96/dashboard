@@ -31,7 +31,8 @@ module.exports = {
         '10': '10px'
       },
       spacing: {
-        '14': '.875rem',
+        '3-5': '.875rem',
+        '14': '3.5rem',
         '54': '3.375rem'
       }
     },
@@ -61,6 +62,9 @@ module.exports = {
     },
     fontFamily: {
       body: ['Manrope']
+    },
+    boxShadow: {
+      navbar: '0 3px 5px rgba(0,30,79,0.05)'
     }
   },
   variants: {},
