@@ -61,12 +61,12 @@ export default class Icon extends Vue {
     validator: x => ['white', 'neutral', 'black'].includes(x)
   }) color!: string | undefined
 
-  public isActive (icon: string): boolean {
+  private isActive (icon: string): boolean {
     return this.icon === icon
   }
 
-  public get classColor (): string {
-    return this.color === 'white' ? 'text-white' : this.color === 'black' ? 'text-black' : this.icon === 'neutral' ? 'text-gray-50' : ''
+  private get classColor (): string {
+    return this.color === 'white' ? 'text-white' : this.color === 'black' ? 'text-black' : this.color === 'neutral' ? 'text-gray-50' : ''
   }
 }
 </script>
