@@ -13,6 +13,6 @@ describe('Loader.vue', () => {
     expect(loader.classes()).toContain('overflow-hidden')
 
     expect(img.classes()).toContain('w-full')
-    expect(img.attributes().src).toEqual('@/assets/img/loader/loader-bg.png')
+    expect(img.attributes().src).toEqual('@/assets/img/loader/loader-bg.svg')
   })
 })
