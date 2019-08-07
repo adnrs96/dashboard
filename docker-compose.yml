@@ -27,6 +27,7 @@ services:
     ports:
       - 5000:5000
     environment:
+      - ENABLE_CORS=true
       - NODE_ENV=development
       - DATABASE_URL=postgresql://asyncy_authenticator:PLEASE_CHANGE_ME@database/asyncy
       - ROOT_DATABASE_URL=postgresql://postgres:postgres@database/asyncy
