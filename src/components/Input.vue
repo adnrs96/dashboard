@@ -1,5 +1,17 @@
 <template>
-  <div></div>
+  <div>
+    <input
+      class="bg-white border border-solid rounded-10 shadow-input h-14 py-4 pl-4 font-body text-base text-gray-100"
+      :class="[`${validation}`]"
+      :type="type"
+      :disabled="disabled"
+      :value="value"
+      :name="name"
+      :placeholder="placeholder"
+      :required="required"
+      :readonly="readonly"
+    />
+  </div>
 </template>
 
 <script lang="ts">
@@ -54,5 +66,17 @@ export default class Input extends Vue {
     type: Boolean,
     default: undefined
   }) readonly valid!: boolean
+
+  private get validation (): string {
+    switch (this.valid) {
+      case true:
+        return 'border-green-50'
+      case false:
+        return 'border-red-50 text-red-80'
+      case undefined:
+      default:
+        return 'border-gray-50'
+    }
+  }
 }
 </script>

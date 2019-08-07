@@ -25,6 +25,13 @@ module.exports = {
           '30': '#CBD2D9',
           '20': '#E4E7EB',
           '10': '#F5F7FA'
+        },
+        green: {
+          '50': '#2DCCA7'
+        },
+        red: {
+          '50': '#EF4E4E',
+          '80': '#AB091E'
         }
       },
       borderRadius: {
@@ -37,7 +44,8 @@ module.exports = {
       },
       boxShadow: {
         avatar: '0 0 2px 0 rgba(0,0,0,0.2)',
-        navbar: '0 3px 5px 0 rgba(0,30,79,0.05)'
+        navbar: '0 3px 5px 0 rgba(0,30,79,0.05)',
+        input: '0px 3px 5px rgba(0, 0, 0, 0.05)'
       }
     },
     letterSpacing: {
@@ -59,9 +67,6 @@ module.exports = {
     },
     fontFamily: {
       body: ['Manrope']
-    },
-    boxShadow: {
-      navbar: '0 3px 5px rgba(0,30,79,0.05)'
     }
   },
   variants: {},
