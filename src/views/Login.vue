@@ -1,6 +1,7 @@
 <template>
   <div>
     <div class="w-11/12 md:w-4/5 lg:w-9/12 xl:w-1/2 flex justify-center absolute z-10 bg-white">
+      <s-arrow circled class="absolute left-0 right-0 md:mt-12 md:ml-12 mt-4 ml-4 z-20" />
       <div class="flex flex-col h-screen justify-around">
         <div class="flex items-center">
           <s-logo icon />
@@ -36,13 +37,15 @@ import SLogo from '@/components/Logo.vue'
 import SText from '@/components/Text.vue'
 import SButton from '@/components/Button.vue'
 import SLoader from '@/components/Loader.vue'
+import SArrow from '@/components/Arrow.vue'
 
 @Component({
   components: {
     SLogo,
     SText,
     SButton,
-    SLoader
+    SLoader,
+    SArrow
   }
 })
 export default class Login extends Vue {
