@@ -34,6 +34,7 @@ export default class Dashboard extends Vue {
     if (!this.isUserLoggedIn) {
       this.initialized = false
       onLogout(this.$apollo.provider.defaultClient as MyApolloClient<unknown>)
+      this.initialized = true
     }
   }
 
