@@ -66,7 +66,7 @@ export default class Icon extends Vue {
   }
 
   public get classColor (): string {
-    return this.color === 'white' ? 'text-white' : this.color === 'black' ? 'text-black' : this.icon === 'neutral' ? 'text-gray-50' : ''
+    return this.color === 'white' ? 'text-white' : this.color === 'black' ? 'text-black' : this.color === 'neutral' ? 'text-gray-50' : ''
   }
 }
 </script>
