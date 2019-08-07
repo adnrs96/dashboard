@@ -31,40 +31,28 @@ module.exports = {
         '10': '10px'
       },
       spacing: {
-        '3-5': '.875rem',
-        '14': '3.5rem',
-        '54': '3.375rem',
-        '263-px': '263px'
-      },
-      letterSpacing: {
-        'less-wide': '.01em'
+        '1/2': '.125rem', // 2px
+        '7/8': '.875rem', // 14px
+        '13': '3.375rem', // 54px
+        '14': '3.5rem' // 56px
       }
     },
-    fontSize: {
-      '2xs': '.6875rem',
-      xs: '.75rem',
-      s: '.8125rem',
-      sm: '.875rem',
-      base: '1rem',
-      lg: '1.125rem',
-      xl: '1.25rem',
-      '2xl': '1.5rem',
-      '3xl': '1.875rem',
-      '4xl': '2.25rem',
-      '5xl': '2.5rem',
-      '6xl': '3.75rem'
+    letterSpacing: {
+      normal: '0', // 0%
+      wide: '.01em', // 1%
+      wider: '.02em' // 2%
     },
-    lineHeight: {
-      '13': '.8125rem',
-      '15': '.9375rem',
-      '18': '1.125rem',
-      '22': '1.375rem',
-      '24': '1.5rem',
-      '26': '1.625rem',
-      '27': '1.6875rem',
-      '34': '2.125rem',
-      '60': '3.75rem',
-      '80': '5rem'
+    fontSize: {
+      xs: '.75rem', // 12px
+      sm: '.875rem', // 14px
+      base: '1rem', // 16px
+      lg: '1.125rem', // 18px
+      xl: '1.25rem', // 20px
+      '2xl': '1.5rem', // 24px
+      '3xl': '1.875rem', // 30px
+      '4xl': '2.25rem', // 36px
+      '5xl': '2.5rem', // 40px
+      '6xl': '3.75rem' // 60px
     },
     fontFamily: {
       body: ['Manrope']

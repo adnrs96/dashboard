@@ -2,11 +2,13 @@
   <component
     :is="tag"
     :class="[
-    `text-${size}`,
-    `text-${color}`,
-    `font-${weight === 'regular' ? 'normal' : weight}`,
-    `leading-${lineHeight}`, 'font-body',
-    `${p === '3' || p === '5' ? 'tracking-wide' : p === '4' || p === '6' ? 'tracking-less-wide' : 'tracking-normal'}`]"
+      'font-body',
+      'leading-normal',
+      `text-${color}`,
+      `${fontSize}`,
+      `${fontWeight}`,
+      `${letterSpacing}`
+    ]"
   >
     <slot />
   </component>
@@ -33,7 +35,6 @@ export default class Text extends Vue {
     validator: v => ['1', '2', '3', '4', '5', '6'].includes(v)
   }) readonly p!: string | undefined
 
-  // font-normal font-medium font-semibold font-bold
   @Prop({
     type: String,
     default: 'regular',
@@ -45,38 +46,56 @@ export default class Text extends Vue {
     default: 'black'
   }) readonly color !: string
 
-  get tag (): string {
+  private get tag (): string {
     return this.span ? 'span' : this.li ? 'li' : this.head ? `h${this.head}` : 'p'
   }
 
-  get size (): string {
-    // text-5xl text-2xl text-lg text-base text-sm text-s text-xs text-2xs
-    return this.head === '1' ? '5xl' : this.head === '2' ? '2xl' : this.p === '1' ? 'lg' : this.p === '2' ? 'base' : this.p === '3' ? 'sm' : this.p === '4' ? 's' : this.p === '5' ? 'xs' : this.p === '6' ? '2xs' : 'base'
-  }
-
-  get lineHeight (): string {
-    // leading-60 leading-34 leading-27 leading-26 leading-24 leading-22 leading-13 leading-18 leading-15
+  private get fontSize (): string {
     switch (this.head) {
       case '1':
-        return '60'
+        return 'text-5xl'
       case '2':
-        return '34'
+        return 'text-2xl'
     }
     switch (this.p) {
       case '1':
-        return '27'
-      case '2':
-        return this.weight === 'regular' ? '26' : '24'
+        return 'text-lg'
       case '3':
-        return '22'
       case '4':
-        return '13'
+        return 'text-sm'
       case '5':
-        return '18'
       case '6':
-        return '15'
+        return 'text-xs'
+      case '2':
       default:
-        return ''
+        return 'text-base'
+    }
+  }
+
+  private get letterSpacing (): string {
+    switch (this.p) {
+      case '3':
+      case '5':
+        return 'tracking-wide'
+      case '4':
+      case '6':
+        return 'tracking-wider'
+      default:
+        return 'tracking-normal'
+    }
+  }
+
+  private get fontWeight (): string {
+    switch (this.weight) {
+      case 'medium':
+        return 'font-medium'
+      case 'bold':
+        return 'font-bold'
+      case 'semibold':
+        return 'font-semibold'
+      case 'regular':
+      default:
+        return 'font-normal'
     }
   }
 }

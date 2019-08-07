@@ -1,10 +1,10 @@
 <template>
   <div>
-    <div class="w-11/12 md:w-3/5 lg:w-1/2 flex justify-center absolute z-10 bg-white">
-      <div class="flex flex-col h-screen justify-around w-263-px">
+    <div class="w-11/12 md:w-4/5 lg:w-9/12 xl:w-1/2 flex justify-center absolute z-10 bg-white">
+      <div class="flex flex-col h-screen justify-around">
         <div class="flex items-center">
           <s-logo icon />
-          <s-logo variant="light" class="ml-14" />
+          <s-logo variant="light" class="ml-7/8" />
         </div>
         <div>
           <div>
