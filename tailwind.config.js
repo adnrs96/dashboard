@@ -34,6 +34,10 @@ module.exports = {
         '1/2': '.125rem', // 2px
         '7/8': '.875rem', // 14px
         '14': '3.5rem' // 56px
+      },
+      boxShadow: {
+        avatar: '0 0 2px 0 rgba(0,0,0,0.2)',
+        navbar: '0 3px 5px 0 rgba(0,30,79,0.05)'
       }
     },
     letterSpacing: {
