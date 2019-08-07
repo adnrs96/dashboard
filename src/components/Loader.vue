@@ -1,6 +1,6 @@
 <template>
   <div class="w-screen h-screen bg-indigo-50 overflow-hidden">
-    <img class="w-full" src="@/assets/img/loader/loader-bg.png" />
+    <img class="w-full h-full object-cover" src="@/assets/img/loader/loader-bg.png" />
   </div>
 </template>
 

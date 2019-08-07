@@ -1,7 +1,12 @@
 <template>
   <component
     :is="tag"
-    :class="[`text-${size}`, `text-${color}`, `font-${this.weight === 'regular' ? 'normal' : this.weight}`, `leading-${lineHeight}`, 'font-body']"
+    :class="[
+    `text-${size}`,
+    `text-${color}`,
+    `font-${weight === 'regular' ? 'normal' : weight}`,
+    `leading-${lineHeight}`, 'font-body',
+    `${p === '3' || p === '5' ? 'tracking-wide' : p === '4' || p === '6' ? 'tracking-less-wide' : 'tracking-normal'}`]"
   >
     <slot />
   </component>
@@ -19,13 +24,13 @@ export default class Text extends Vue {
   @Prop({
     type: String,
     default: undefined,
-    validator: v => ['1', '2', '3', '4', '5', '6'].includes(v)
+    validator: v => ['1', '2'].includes(v)
   }) readonly head!: string | undefined
 
   @Prop({
     type: String,
     default: undefined,
-    validator: v => ['1', '2'].includes(v)
+    validator: v => ['1', '2', '3', '4', '5', '6'].includes(v)
   }) readonly p!: string | undefined
 
   // font-normal font-medium font-semibold font-bold
@@ -37,8 +42,7 @@ export default class Text extends Vue {
 
   @Prop({
     type: String,
-    default: 'black',
-    validator: x => ['white', 'black'].includes(x)
+    default: 'black'
   }) readonly color !: string
 
   get tag (): string {

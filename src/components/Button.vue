@@ -18,7 +18,7 @@
       v-if="icon"
       :icon="icon"
       :color="black ? 'white' : 'neutral'"
-      :class="[`${!$slots.default ? 'py-14 px-54' : 'pr-4'}`]"
+      :class="[`${!$slots.default ? 'py-14 px-54' : 'pr-5'}`]"
     />
   </component>
 </template>

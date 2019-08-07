@@ -32,7 +32,11 @@ module.exports = {
       },
       spacing: {
         '14': '.875rem',
-        '54': '3.375rem'
+        '54': '3.375rem',
+        '263-px': '263px'
+      },
+      letterSpacing: {
+        'less-wide': '.01em'
       }
     },
     fontSize: {
@@ -46,7 +50,8 @@ module.exports = {
       '2xl': '1.5rem',
       '3xl': '1.875rem',
       '4xl': '2.25rem',
-      '5xl': '2.5rem'
+      '5xl': '2.5rem',
+      '6xl': '3.75rem'
     },
     lineHeight: {
       '13': '.8125rem',
@@ -57,7 +62,8 @@ module.exports = {
       '26': '1.625rem',
       '27': '1.6875rem',
       '34': '2.125rem',
-      '60': '3.75rem'
+      '60': '3.75rem',
+      '80': '5rem'
     },
     fontFamily: {
       body: ['Manrope']
