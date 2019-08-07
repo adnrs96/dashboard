@@ -1,0 +1,20 @@
+fragment Owner on Owner {
+  name
+  username
+  profileImageUrl
+  createstamp
+  ownerEmails {
+    totalCount
+    nodes {
+      email
+      isVerified
+    }
+  }
+  ownerVcs {
+    totalCount
+    nodes {
+      service
+      username
+    }
+  }
+}

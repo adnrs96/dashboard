@@ -1,5 +1,6 @@
 <template>
   <div class="dashboard-container">
+    <navbar />
     <apps-table />
     <a
       href="#"
@@ -11,12 +12,14 @@
 <script lang="ts">
 import { Component, Vue } from 'vue-property-decorator'
 import AppsTable from '@/components/AppsTable.vue'
+import Navbar from '@/components/Navbar.vue'
 import axios from 'axios'
 import { Action, Getter } from 'vuex-class'
 
 @Component({
   components: {
-    AppsTable
+    AppsTable,
+    Navbar
   }
 })
 export default class Home extends Vue {

@@ -1,0 +1,5 @@
+fragment OwnerMinimal on Owner {
+  name
+  username
+  profileImageUrl
+}
