@@ -6,25 +6,33 @@
         <div
           v-if="isLoading"
           class="loading apollo"
-        >Loading...</div>
+        >
+          Loading...
+        </div>
 
         <!-- Error -->
         <div
           v-else-if="error"
           class="error apollo"
-        >An error occured</div>
+        >
+          An error occured
+        </div>
 
         <!-- Result -->
         <div
           v-else-if="data && data.allApps && data.allApps.nodes && data.allApps.nodes.length > 0"
           class="result apollo"
-        >{{ data.allApps.nodes }}</div>
+        >
+          {{ data.allApps.nodes }}
+        </div>
 
         <!-- No result -->
         <div
           v-else
           class="no-result apollo"
-        >No result :(</div>
+        >
+          No result :(
+        </div>
       </template>
     </ApolloQuery>
   </div>

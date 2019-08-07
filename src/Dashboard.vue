@@ -2,7 +2,9 @@
   <div id="dashboard">
     <!-- @DOTO: Replace this with a specific Unauthorized component -->
     <div v-if="!initialized || !isUserLoggedIn">
-      <div v-if="!initialized">Loading</div>
+      <div v-if="!initialized">
+        Loading
+      </div>
       <div v-else>
         <a :href="authUrl">Login</a>
       </div>
