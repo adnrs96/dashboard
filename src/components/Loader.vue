@@ -2,7 +2,7 @@
   <div class="w-screen h-screen bg-indigo-50 overflow-hidden">
     <img
       class="w-full h-full object-cover"
-      src="@/assets/img/loader/loader-bg.png"
+      src="@/assets/img/loader/loader-bg.svg"
     >
   </div>
 </template>

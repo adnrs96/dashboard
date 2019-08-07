@@ -1,8 +1,8 @@
 <template>
-  <component
-    :is="'button'"
-    class="flex items-center rounded-10"
+  <button
+    class="flex items-center rounded-10 focus:outline-none focus:shadow-outline"
     :class="[`bg-${black ? 'gray-100 hover:bg-gray-90' : 'white hover:bg-gray-10'}`, `${black ? '': 'border border-solid border-gray-30'}`]"
+    @click="$emit('click')"
   >
     <s-text
       v-if="$slots.default"
@@ -20,7 +20,7 @@
       :color="black ? 'white' : 'neutral'"
       :class="[`${!$slots.default ? 'py-7/8 px-14' : 'pr-5'}`]"
     />
-  </component>
+  </button>
 </template>
 
 <script lang="ts">

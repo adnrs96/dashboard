@@ -59,14 +59,13 @@ module.exports = {
     },
     fontFamily: {
       body: ['Manrope']
-    },
-    boxShadow: {
-      navbar: '0 3px 5px rgba(0,30,79,0.05)'
     }
   },
   variants: {},
   plugins: [
-    function ({ addUtilities }) {
+    function ({
+      addUtilities
+    }) {
       const rotations = {
         '.rotate--90deg': {
           transform: 'rotate(-90deg)'
