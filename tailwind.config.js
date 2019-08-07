@@ -61,5 +61,21 @@ module.exports = {
     }
   },
   variants: {},
-  plugins: []
+  plugins: [
+    function ({ addUtilities }) {
+      const rotations = {
+        '.rotate--90deg': {
+          transform: 'rotate(-90deg)'
+        },
+        '.rotate-90deg': {
+          transform: 'rotate(90deg)'
+        },
+        '.rotate-180deg': {
+          transform: 'rotate(180deg)'
+        }
+      }
+
+      addUtilities(rotations)
+    }
+  ]
 }
