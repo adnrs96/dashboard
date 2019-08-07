@@ -2,19 +2,54 @@ import { mount } from '@vue/test-utils'
 import Button from '@/components/Button.vue'
 
 describe('Button.vue', () => {
-  it('should have to good color', () => {
-    const black = mount(Button, {
-      propsData: {
-        black: true
-      }
-    })
-    const white = mount(Button, {
-      propsData: {
-        white: true
-      }
-    })
+  describe('get path()', () => {
+    it('should return the good color', () => {
+      const black = mount(Button, {
+        propsData: {
+          black: true
+        }
+      })
+      const white = mount(Button, {
+        propsData: {
+          white: true
+        }
+      })
 
-    // expect(black.find('p').classes('bg-black')).toBeTruthy()
-    // expect(white.find('p').classes('bg-white')).toBeTruthy()
+      expect((black.vm as any).textColor).toBe('white')
+      expect((white.vm as any).textColor).toBe('black')
+    })
+  })
+
+  describe('get textColor', () => {
+    it('should return the good icon', () => {
+      const github = mount(Button, {
+        propsData: {
+          icon: 'github-o'
+        }
+      })
+      const gitlab = mount(Button, {
+        propsData: {
+          icon: 'gitlab-o'
+        }
+      })
+      const google = mount(Button, {
+        propsData: {
+          icon: 'google-f'
+        }
+      })
+
+      expect(github.vm).toHaveProperty(
+        'path',
+        './assets/img/logos/github-waving-cat-outline.svg'
+      )
+      expect(gitlab.vm).toHaveProperty(
+        'path',
+        './assets/img/logos/gitlab-outline.svg'
+      )
+      expect(google.vm).toHaveProperty(
+        'path',
+        './assets/img/logos/google-filled.svg'
+      )
+    })
   })
 })

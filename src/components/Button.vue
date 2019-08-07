@@ -18,7 +18,7 @@
       v-if="icon"
       :icon="icon"
       :color="black ? 'white' : 'neutral'"
-      :class="[`${!$slots.default ? 'py-14 px-54' : 'pr-5'}`]"
+      :class="[`${!$slots.default ? 'py-7/8 px-14' : 'pr-5'}`]"
     />
   </component>
 </template>
@@ -44,11 +44,14 @@ export default class Button extends Vue {
     default: undefined
   }) readonly icon!: string | undefined
 
-  public get path (): string {
-    return `./assets/img/logos/${this.icon === 'gitlab-o' ? 'gitlab-outline.svg' : this.icon === 'google-f' ? 'google-filled.svg' : this.icon === 'github-o' ? 'github.waving-cat-outline.svg' : ''}`
+  private get path (): string {
+    return `./assets/img/logos/${this.icon === 'gitlab-o'
+      ? 'gitlab-outline.svg' : this.icon === 'google-f'
+        ? 'google-filled.svg' : this.icon === 'github-o'
+          ? 'github-waving-cat-outline.svg' : ''}`
   }
 
-  public get textColor (): string {
+  private get textColor (): string {
     return this.black ? 'white' : 'black'
   }
 }
