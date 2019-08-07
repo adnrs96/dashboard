@@ -1,0 +1,7 @@
+#import "./ownerMinimal.fragment.gql"
+
+query owner($uuid: UUID!) {
+  ownerByUuid(uuid:$uuid) {
+    ...OwnerMinimal
+  }
+}
