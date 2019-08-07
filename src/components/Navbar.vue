@@ -7,7 +7,7 @@
       />
       <s-logo
         variant="light"
-        class="ml-3-5 mt-1 h-5 w-auto"
+        class="ml-7/8 mt-1 h-5 w-auto"
       />
     </div>
     <div class="flex items-center flex-grow">
