@@ -4,17 +4,16 @@
     :variables="{ uuid: getOwnerUuid }"
   >
     <template slot-scope="{ result: { data } }">
-      <div v-if="data && data.ownerByUuid && data.ownerByUuid.profileImageUrl">
-        <!-- <img
-          :src="`${data.ownerByUuid.profileImageUrl}?s=64`"
-          class="h-10 w-10 rounded-full border-white border border-solid shadow"
-        />
-      </div>
-
-      <div v-else> -->
+      <div class="w-10">
         <img
+          v-if="data && data.ownerByUuid && data.ownerByUuid.profileImageUrl"
+          :src="`${data.ownerByUuid.profileImageUrl}?s=64`"
+          class="h-10 w-10 rounded-full border-white border border-solid shadow-avatar"
+        />
+        <img
+          v-else
           src="@/assets/img/avatar.svg"
-          class="h-10 w-10 rounded-full border-white border border-solid shadow"
+          class="h-10 w-10 rounded-full border-white border border-solid shadow-avatar"
         />
       </div>
     </template>
@@ -26,9 +25,9 @@ import { Component, Vue } from 'vue-property-decorator'
 import { Getter } from 'vuex-class'
 
 @Component({
-  name: 'Navbar'
+  name: 'Avatar'
 })
-export default class Navbar extends Vue {
+export default class Avatar extends Vue {
   @Getter('getOwnerUuid') private readonly getOwnerUuid!: string | undefined
 }
 </script>

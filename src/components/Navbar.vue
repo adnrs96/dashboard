@@ -1,6 +1,6 @@
 <template>
-  <nav class="flex items-center flex-wrap bg-white px-6 h-14 shadow-navbar border-solid border-b border-gray-20">
-    <div class="flex items-center">
+  <nav class="flex items-center flex-no-wrap bg-white px-6 h-14 shadow-navbar border-solid border-b border-gray-20">
+    <div class="flex items-center mr-6">
       <s-logo
         icon
         class="h-6 w-6"

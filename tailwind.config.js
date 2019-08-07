@@ -31,8 +31,13 @@ module.exports = {
         '10': '10px'
       },
       spacing: {
-        '14': '.875rem',
+        '3-5': '.875rem',
+        '14': '3.5rem',
         '54': '3.375rem'
+      },
+      boxShadow: {
+        avatar: '0 0 2px 0 rgba(0,0,0,0.2)',
+        navbar: '0 3px 5px 0 rgba(0,30,79,0.05)'
       }
     },
     fontSize: {
