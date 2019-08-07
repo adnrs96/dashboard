@@ -38,13 +38,16 @@ describe('Button.vue', () => {
         }
       })
 
-      expect((github.vm as any).path).toBe(
+      expect(github.vm).toHaveProperty(
+        'path',
         './assets/img/logos/github-waving-cat-outline.svg'
       )
-      expect((gitlab.vm as any).path).toBe(
+      expect(gitlab.vm).toHaveProperty(
+        'path',
         './assets/img/logos/gitlab-outline.svg'
       )
-      expect((google.vm as any).path).toBe(
+      expect(google.vm).toHaveProperty(
+        'path',
         './assets/img/logos/google-filled.svg'
       )
     })

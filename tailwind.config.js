@@ -33,7 +33,6 @@ module.exports = {
       spacing: {
         '1/2': '.125rem', // 2px
         '7/8': '.875rem', // 14px
-        '13': '3.375rem', // 54px
         '14': '3.5rem' // 56px
       }
     },
