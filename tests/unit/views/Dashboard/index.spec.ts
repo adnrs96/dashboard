@@ -1,6 +1,6 @@
 import { shallowMount, createLocalVue } from '@vue/test-utils'
 import Vuex, { Store } from 'vuex'
-import Dashboard from '@/views/Dashboard.vue'
+import Dashboard from '@/views/Dashboard/index.vue'
 
 const localVue = createLocalVue()
 

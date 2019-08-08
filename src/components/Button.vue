@@ -1,7 +1,7 @@
 <template>
   <button
     class="flex items-center rounded-10 focus:outline-none focus:shadow-outline"
-    :class="[`bg-${black ? 'gray-100 hover:bg-gray-90' : 'white hover:bg-gray-10'}`, `${black ? '': 'border border-solid border-gray-30'}`]"
+    :class="[`${backgroundColor}`, `${black || primary ? '': 'border border-solid border-gray-30'}`]"
     @click="$emit('click')"
   >
     <s-text
@@ -36,9 +36,9 @@ import SIcon from '@/components/Icon.vue'
   }
 })
 export default class Button extends Vue {
-  // bg-gray-100 bg-white
   @Prop({ type: Boolean, default: false }) readonly white!: boolean
   @Prop({ type: Boolean, default: false }) readonly black!: boolean
+  @Prop({ type: Boolean, default: false }) readonly primary!: boolean
   @Prop({
     type: String,
     default: undefined
@@ -52,7 +52,13 @@ export default class Button extends Vue {
   }
 
   private get textColor (): string {
-    return this.black ? 'white' : 'black'
+    return this.black || this.primary ? 'white' : 'black'
+  }
+
+  private get backgroundColor (): string {
+    return this.black
+      ? 'bg-gray-100 hover:bg-gray-90' : this.primary
+        ? 'bg-indigo-60 hover:bg-indigo-70' : 'bg-white hover:bg-gray-10'
   }
 }
 </script>
