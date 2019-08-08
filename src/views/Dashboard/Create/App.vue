@@ -11,13 +11,16 @@
       <div class="w-56 h-48 bg-gray-c6c6c6 mb-12" />
       <s-input
         placeholder="Enter an app name"
-        icon="spinner"
         class="w-full"
+        icon="spinner"
+        :loading="loading"
       />
       <s-button
         primary
         center
         class="my-4 w-full"
+        :icon="loading ? 'spinner' : ''"
+        :loading="loading"
       >
         Create your first app
       </s-button>
@@ -45,5 +48,16 @@ import SInput from '@/components/Input.vue'
     SInput
   }
 })
-export default class App extends Vue { }
+export default class App extends Vue {
+  private readonly _loading: boolean
+
+  constructor () {
+    super()
+    this._loading = false
+  }
+
+  private get loading (): boolean {
+    return this._loading
+  }
+}
 </script>
