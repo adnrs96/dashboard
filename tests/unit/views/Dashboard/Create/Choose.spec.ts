@@ -34,10 +34,29 @@ describe('Choose.vue', () => {
       })
       const vm = view.vm as any
       $router.push = jest.fn()
-
       vm.goTo('new-app')
 
       expect($router.push).toHaveBeenCalled()
+    })
+
+    it(`shouldn't do anything without a parameter`, () => {
+      expect.assertions(2)
+
+      const localVue = createLocalVue()
+      localVue.use(VueRouter)
+      const $router = new VueRouter()
+      const view = shallowMount(Choose, {
+        mocks: {
+          $router
+        }
+      })
+      const vm = view.vm as any
+      $router.push = jest.fn()
+      window.location.assign = jest.fn()
+      vm.goTo()
+
+      expect($router.push).not.toHaveBeenCalled()
+      expect(window.location.assign).not.toHaveBeenCalled()
     })
   })
 })
