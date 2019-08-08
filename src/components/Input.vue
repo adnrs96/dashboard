@@ -1,6 +1,6 @@
 <template>
   <div
-    class="bg-white"
+    class="bg-transparent"
     :class="[
       `${validationBorder}`,
       `${shake ? 'animate-shake' : ''}`,
@@ -35,6 +35,7 @@
       :placeholder="placeholder"
       :required="required"
       :readonly="readonly"
+      :autocomplete="autocomplete"
     >
     <svg
       v-if="!icon && loading"
@@ -127,6 +128,11 @@ export default class Input extends Vue {
     type: Boolean,
     default: false
   }) readonly shake!: boolean
+
+  @Prop({
+    type: Boolean,
+    default: false
+  }) readonly autocomplete!: boolean
 
   private get validationBorder (): string {
     switch (this.valid) {
