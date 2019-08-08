@@ -4,64 +4,87 @@ import Arrow from '@/components/Arrow.vue'
 describe('Arrow.vue', () => {
   describe('direction', () => {
     it('should point left', () => {
-      const basic = mount(Arrow)
-      const left = mount(Arrow, {
+      const arrow = mount(Arrow, {
         propsData: {
           left: true
         }
       })
 
-      expect.assertions(6)
-
-      expect(basic.classes('rotate-90deg')).toBeFalsy()
-      expect(basic.classes('rotate--90deg')).toBeFalsy()
-      expect(basic.classes('rotate-180deg')).toBeFalsy()
-
-      expect(left.classes('rotate-90deg')).toBeFalsy()
-      expect(left.classes('rotate--90deg')).toBeFalsy()
-      expect(left.classes('rotate-180deg')).toBeFalsy()
+      expect(arrow.classes('rotate')).toBeTruthy()
     })
 
-    it('should point right', () => {
-      const right = mount(Arrow, {
+    it('should point top left', () => {
+      const arrow = mount(Arrow, {
         propsData: {
-          right: true
+          left: true,
+          top: true
         }
       })
 
-      expect.assertions(3)
-
-      expect(right.classes('rotate-90deg')).toBeFalsy()
-      expect(right.classes('rotate--90deg')).toBeFalsy()
-      expect(right.classes('rotate-180deg')).toBeTruthy()
+      expect(arrow.classes('rotate-45deg')).toBeTruthy()
     })
 
     it('should point top', () => {
-      const top = mount(Arrow, {
+      const arrow = mount(Arrow, {
         propsData: {
           top: true
         }
       })
 
-      expect.assertions(3)
+      expect(arrow.classes('rotate-90deg')).toBeTruthy()
+    })
 
-      expect(top.classes('rotate-90deg')).toBeTruthy()
-      expect(top.classes('rotate--90deg')).toBeFalsy()
-      expect(top.classes('rotate-180deg')).toBeFalsy()
+    it('should point top right', () => {
+      const arrow = mount(Arrow, {
+        propsData: {
+          top: true,
+          right: true
+        }
+      })
+
+      expect(arrow.classes('rotate-135deg')).toBeTruthy()
+    })
+
+    it('should point right', () => {
+      const arrow = mount(Arrow, {
+        propsData: {
+          right: true
+        }
+      })
+
+      expect(arrow.classes('rotate-180deg')).toBeTruthy()
+    })
+
+    it('should point bottom right', () => {
+      const arrow = mount(Arrow, {
+        propsData: {
+          right: true,
+          bottom: true
+        }
+      })
+
+      expect(arrow.classes('rotate-225deg')).toBeTruthy()
     })
 
     it('should point bottom', () => {
-      const bottom = mount(Arrow, {
+      const arrow = mount(Arrow, {
         propsData: {
           bottom: true
         }
       })
 
-      expect.assertions(3)
+      expect(arrow.classes('rotate-270deg')).toBeTruthy()
+    })
 
-      expect(bottom.classes('rotate-90deg')).toBeFalsy()
-      expect(bottom.classes('rotate--90deg')).toBeTruthy()
-      expect(bottom.classes('rotate-180deg')).toBeFalsy()
+    it('should point bottom left', () => {
+      const arrow = mount(Arrow, {
+        propsData: {
+          bottom: true,
+          left: true
+        }
+      })
+
+      expect(arrow.classes('rotate-315deg')).toBeTruthy()
     })
   })
 
