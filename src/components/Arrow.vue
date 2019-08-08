@@ -32,7 +32,7 @@ export default class Arrow extends Vue {
 
   @Prop({
     type: Boolean,
-    default: true
+    default: false
   }) readonly left!: boolean
 
   @Prop({
@@ -51,10 +51,14 @@ export default class Arrow extends Vue {
   }) readonly right!: boolean
 
   private get rotate (): string {
-    return this.top
-      ? 'rotate-90deg' : this.bottom
-        ? 'rotate--90deg' : this.right
-          ? 'rotate-180deg' : ''
+    return this.top && this.right
+      ? 'rotate-135deg' : this.bottom && this.right
+        ? 'rotate-225deg' : this.top && this.left
+          ? 'rotate-45deg' : this.bottom && this.left
+            ? 'rotate-315deg' : this.top
+              ? 'rotate-90deg' : this.bottom
+                ? 'rotate-270deg' : this.right
+                  ? 'rotate-180deg' : 'rotate'
   }
 
   private get circle (): string {
