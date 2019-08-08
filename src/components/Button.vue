@@ -1,7 +1,10 @@
 <template>
   <button
     class="flex items-center rounded-10 focus:outline-none focus:shadow-outline"
-    :class="[`${backgroundColor}`, `${black || primary ? '': 'border border-solid border-gray-30'}`]"
+    :class="[
+      `${backgroundColor}`, `${black || primary ? '': 'border border-solid border-gray-30'}`,
+      `${center ? 'justify-center': ''}`
+    ]"
     @click="$emit('click')"
   >
     <s-text
@@ -10,7 +13,9 @@
       weight="semibold"
       :color="textColor"
       class="py-4 pl-4"
-      :class="[`${icon ? 'pr-8' : 'pr-4'}`]"
+      :class="[
+        `${icon ? 'pr-8' : 'pr-4'}`,
+      ]"
     >
       <slot />
     </s-text>
@@ -39,6 +44,7 @@ export default class Button extends Vue {
   @Prop({ type: Boolean, default: false }) readonly white!: boolean
   @Prop({ type: Boolean, default: false }) readonly black!: boolean
   @Prop({ type: Boolean, default: false }) readonly primary!: boolean
+  @Prop({ type: Boolean, default: false }) readonly center!: boolean
   @Prop({
     type: String,
     default: undefined

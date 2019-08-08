@@ -1,5 +1,5 @@
 <template>
-  <div>
+  <div class="flex items-center justify-center">
     <p v-if="beginner">
       Welcome
     </p>

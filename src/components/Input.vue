@@ -121,7 +121,7 @@ export default class Input extends Vue {
   @Prop({
     type: String,
     default: undefined,
-    validator: x => ['github-o', 'gitlab-o', 'google-f'].includes(x)
+    validator: x => ['github-o', 'gitlab-o', 'google-f', 'spinner'].includes(x)
   }) readonly icon!: string | undefined
 
   @Prop({
