@@ -22,7 +22,10 @@
       >
         Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut.
       </s-text>
-      <s-button primary>
+      <s-button
+        primary
+        @click="goTo('new-app')"
+      >
         Create a new app
       </s-button>
     </div>
@@ -49,7 +52,10 @@
       >
         Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut.
       </s-text>
-      <s-button primary>
+      <s-button
+        primary
+        @click="goTo('submit-microservice')"
+      >
         Submit a microservice
       </s-button>
     </div>
@@ -68,5 +74,13 @@ import SButton from '@/components/Button.vue'
     SButton
   }
 })
-export default class Choose extends Vue { }
+export default class Choose extends Vue {
+  private goTo (path: string): void {
+    if (path === 'new-app') {
+      this.$router.push({ name: 'new-app' })
+    } else if (path === 'submit-microservice') {
+      window.location.assign('https://hub.storyscript.io/sync/')
+    }
+  }
+}
 </script>
