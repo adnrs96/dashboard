@@ -11,8 +11,24 @@ export default new Router({
   routes: [
     {
       path: '/',
-      name: 'dashboard',
-      component: Dashboard
+      component: () => import('@/views/Dashboard/index.vue'),
+      children: [{
+        path: '',
+        name: 'dashboard',
+        component: () => import('@/views/Dashboard/Overview.vue')
+      }, {
+        path: 'new/',
+        component: () => import('@/views/Dashboard/Create/index.vue'),
+        children: [{
+          path: '',
+          name: 'new',
+          component: () => import('@/views/Dashboard/Create/Choose.vue')
+        }, {
+          path: 'app',
+          name: 'new-app',
+          component: () => import('@/views/Dashboard/Create/App.vue')
+        }]
+      }]
     }
     // {
     //   path: '/login',

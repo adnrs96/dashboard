@@ -25,6 +25,8 @@
   font-weight: 500;
 }
 
+@import "custom";
+
 @import './buttons.scss';
 
 @import '~tailwindcss/utilities';
