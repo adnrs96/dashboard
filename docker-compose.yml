@@ -20,7 +20,7 @@ services:
       - postgres-data:/var/lib/postgresql/data
 
   graphql:
-    image: asyncy/platform-graphql:c8569f7
+    image: asyncy/platform-graphql:46194db
     depends_on:
       - database
     command: ['./wait-for-postgres.sh', 'database', 'node', 'server.js']
