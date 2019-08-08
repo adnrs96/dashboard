@@ -35,7 +35,7 @@ services:
       - storynet
 
   api:
-    image: asyncy/dashboard-api:v0.1.1-5-g300bd97
+    image: asyncy/dashboard-api:v0.2.1-11-g339bfea
     depends_on:
       - graphql
     networks:
@@ -50,10 +50,10 @@ services:
       - API_SSL=false
       - API_BASE_URL=localhost:8090
       - APP_BASE_URL=localhost
-      - GH_APP_ID=
-      - GH_CLIENT_ID=
-      - GH_CLIENT_SECRET=
-      - GH_APP_PEM=
+      - GH_APP_ID=${GH_APP_ID}
+      - GH_CLIENT_ID=${GH_CLIENT_ID}
+      - GH_CLIENT_SECRET=${GH_CLIENT_SECRET}
+      - GH_APP_PEM=${GH_APP_PEM}
 
 volumes:
   postgres-data:
