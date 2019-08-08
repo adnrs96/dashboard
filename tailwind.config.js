@@ -71,18 +71,34 @@ module.exports = {
   },
   variants: {},
   plugins: [
-    function ({
-      addUtilities
-    }) {
+    function ({ addUtilities }) {
       const rotations = {
-        '.rotate--90deg': {
-          transform: 'rotate(-90deg)'
+        '.rotate': {
+          transform: 'rotate(0deg)'
+        },
+        '.rotate-45deg': {
+          transform: 'rotate(45deg)'
         },
         '.rotate-90deg': {
           transform: 'rotate(90deg)'
         },
+        '.rotate-135deg': {
+          transform: 'rotate(135deg)'
+        },
         '.rotate-180deg': {
           transform: 'rotate(180deg)'
+        },
+        '.rotate-225deg': {
+          transform: 'rotate(225deg)'
+        },
+        '.rotate-270deg': {
+          transform: 'rotate(270deg)'
+        },
+        '.rotate-315deg': {
+          transform: 'rotate(315deg)'
+        },
+        '.rotate-360deg': {
+          transform: 'rotate(360deg)'
         }
       }
 
