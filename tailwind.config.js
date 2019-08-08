@@ -49,6 +49,9 @@ module.exports = {
         navbar: '0 3px 5px 0 rgba(0,30,79,0.05)',
         input: '0px 3px 5px rgba(0, 0, 0, 0.05)',
         card: '0px 5px 20px rgba(16, 22, 111, 0.05)'
+      },
+      inset: {
+        '14': '3.5rem'
       }
     },
     letterSpacing: {
