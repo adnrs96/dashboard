@@ -2,8 +2,9 @@
   <button
     class="flex items-center rounded-10 focus:outline-none focus:shadow-outline"
     :class="[
-      `${backgroundColor}`, `${black || primary ? '': 'border border-solid border-gray-30'}`,
-      `${center ? 'justify-center': ''}`
+      `${backgroundColor}`,
+      `${black || primary ? '': 'border border-solid border-gray-30'}`,
+      `${center ? 'justify-center': 'justify-between'}`
     ]"
     @click="$emit('click')"
   >
@@ -12,17 +13,25 @@
       p="2"
       weight="semibold"
       :color="textColor"
-      class="py-4 pl-4"
+      class="py-4 pl-5"
       :class="[
-        `${icon ? 'pr-8' : 'pr-4'}`,
+        `${icon ? 'pr-8' : 'pr-5'}`,
       ]"
     >
       <slot />
     </s-text>
     <s-icon
-      v-if="icon"
+      v-if="!icon && loading"
+      icon="spinner"
+      :color="black || primary ? 'white' : 'neutral'"
+      :loading="loading"
+      :class="[`${!$slots.default ? 'py-7/8 px-14' : 'pr-5'}`]"
+    />
+    <s-icon
+      v-else-if="icon"
+      :loading="loading"
       :icon="icon"
-      :color="black ? 'white' : 'neutral'"
+      :color="black || primary ? 'white' : 'neutral'"
       :class="[`${!$slots.default ? 'py-7/8 px-14' : 'pr-5'}`]"
     />
   </button>
@@ -45,6 +54,7 @@ export default class Button extends Vue {
   @Prop({ type: Boolean, default: false }) readonly black!: boolean
   @Prop({ type: Boolean, default: false }) readonly primary!: boolean
   @Prop({ type: Boolean, default: false }) readonly center!: boolean
+  @Prop({ type: Boolean, default: false }) readonly loading!: boolean
   @Prop({
     type: String,
     default: undefined
