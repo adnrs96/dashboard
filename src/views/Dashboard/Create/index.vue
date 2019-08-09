@@ -1,5 +1,10 @@
 <template>
-  <div class="flex flex-col items-center justify-center">
+  <div
+    class="flex flex-col items-center"
+    :class="[
+      `${beginner ? 'justify-center': 'justify-start'}`
+    ]"
+  >
     <s-arrow
       circled
       left
