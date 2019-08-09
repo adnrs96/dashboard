@@ -39,10 +39,14 @@ module.exports = {
         '10': '10px'
       },
       spacing: {
+        initial: 'initial',
         '1/2': '.125rem', // 2px
         '7/8': '.875rem', // 14px
+        '11': '2.75rem', // 44px
         '14': '3.5rem', // 56px
-        '45-pcent': '45%'
+        '60': '15rem', // 240px
+        '62': '15.5rem', // 248px
+        '90': '22.5rem'
       },
       boxShadow: {
         avatar: '0 0 2px 0 rgba(0,0,0,0.2)',

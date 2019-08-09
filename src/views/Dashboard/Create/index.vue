@@ -9,7 +9,7 @@
     <p v-if="beginner">
       Welcome
     </p>
-    <router-view />
+    <router-view class="m-8" />
     <footer v-if="beginner">
       Footer
     </footer>
