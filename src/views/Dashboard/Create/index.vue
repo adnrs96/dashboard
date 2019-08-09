@@ -1,5 +1,5 @@
 <template>
-  <div class="flex items-center justify-center">
+  <div class="flex items-start md:items-center justify-center">
     <s-arrow
       circled
       left
@@ -9,7 +9,7 @@
     <p v-if="beginner">
       Welcome
     </p>
-    <router-view />
+    <router-view class="m-8" />
     <footer v-if="beginner">
       Footer
     </footer>

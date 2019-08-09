@@ -1,6 +1,18 @@
 <template>
-  <div class="my-4 md:my-0 shadow-card w-11/12 flex-col md:flex-row md:w-11/12 xl:w-2/5 rounded-10 p-4 flex items-center justify-between bg-white">
-    <div class="flex flex-col justify-center items-center py-8 px-6 md:px-8 lg:px-10 w-11/12  lg:w-3/4 xl:w-45-pcent">
+  <div
+    class="bg-white"
+    :class="[
+      'flex',
+      'flex-col',
+      'items-center',
+      'justify-between',
+      'shadow-card',
+      'rounded-10',
+      'lg:flex-row',
+      'p-4',
+    ]"
+  >
+    <div class="flex flex-col justify-center items-center sm:w-90 lg:w-62 mx-4 md:mx-16 my-8">
       <s-text
         head="2"
         weight="semibold"
@@ -8,7 +20,7 @@
       >
         App
       </s-text>
-      <div class="bg-gray-c6c6c6 pt-6 pb-5 px-4 mb-3">
+      <div class="bg-gray-c6c6c6 pt-6 pb-5 px-5 mb-6">
         <img
           src="@/assets/img/illustrations/clip-bad-gateaway.svg"
           alt="Create new app illustration"
@@ -30,17 +42,16 @@
       </s-button>
     </div>
     <!-- eslint-disable-next-line vue/html-self-closing -->
-    <div class="hidden sm:block bg-indigo-10 w-px self-stretch"></div>
-    <div class="flex flex-col justify-center items-center py-8 px-6 md:px-8 lg:px-10 w-11/12 md: md:w-3/4 xl:w-45-pcent">
+    <div class="bg-indigo-10 w-full h-px lg:w-px lg:h-initial self-stretch"></div>
+    <div class="flex flex-col justify-center items-center w-62 mx-4 md:mx-16 my-8">
       <s-text
         head="2"
         weight="semibold"
-        class="mb-6"
       >
         Microservice
       </s-text>
       <img
-        class="mb-12"
+        class="mb-12 mt-11"
         src="@/assets/img/illustrations/clip-uploading.svg"
         alt="Submit a microservice illustration"
       >
