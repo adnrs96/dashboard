@@ -1,5 +1,5 @@
 <template>
-  <div class="flex items-center justify-center">
+  <div class="flex items-start md:items-center justify-center">
     <s-arrow
       circled
       left
