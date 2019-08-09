@@ -80,7 +80,7 @@ module.exports = {
       '6xl': '3.75rem' // 60px
     },
     fontFamily: {
-      body: ['Manrope']
+      body: ['Manrope', 'Helvetica', 'Arial']
     }
   },
   variants: {},

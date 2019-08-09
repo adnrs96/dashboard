@@ -3,6 +3,7 @@
     <img
       class="w-full h-full object-cover"
       src="@/assets/img/loader/loader-bg.svg"
+      alt="Loading screen"
     >
   </div>
 </template>
