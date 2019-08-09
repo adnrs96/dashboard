@@ -1,4 +1,5 @@
 <template>
+  <!-- @TODO remove prop prev and emit click only --- parent component will manage what to do -->
   <div
     :class="[
       `${rotate}`,

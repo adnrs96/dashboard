@@ -22,7 +22,6 @@ import { Component, Vue, Watch } from 'vue-property-decorator'
 import { Action, Getter } from 'vuex-class'
 import ApolloPlugin, { MyApolloClient } from '@/plugins/vue-apollo'
 import Initializer from '@/views/Initializer.vue'
-import { Route, NavigationGuard } from 'vue-router'
 
 @Component({
   name: 'Dashboard',

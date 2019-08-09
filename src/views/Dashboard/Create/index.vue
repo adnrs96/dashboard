@@ -97,7 +97,6 @@
 
 <script lang="ts">
 import { Component, Vue, Prop } from 'vue-property-decorator'
-import { Getter } from 'vuex-class'
 import SArrow from '@/components/Arrow.vue'
 import SText from '@/components/Text.vue'
 import SIcon from '@/components/Icon.vue'
@@ -114,7 +113,5 @@ import Owner from '@/components/Owner.vue'
 })
 export default class Create extends Vue {
   @Prop({ type: Boolean, default: false }) private beginner!: boolean
-
-  @Getter('getUserName') private getUserName!: string
 }
 </script>

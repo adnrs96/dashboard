@@ -1,6 +1,6 @@
 <template>
   <div class="shadow-card rounded-10 bg-white">
-    <div class=" w-70 md:w-80 md:w-87 mt-12 mx-4 md:mx-20 mb-7 flex flex-col items-center">
+    <div class="w-70 md:w-80 lg:w-87 mt-12 mx-4 md:mx-20 mb-7 flex flex-col items-center">
       <s-text
         head="2"
         weight="semibold"
