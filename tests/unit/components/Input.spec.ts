@@ -50,5 +50,35 @@ describe('Input.vue', () => {
       expect.assertions(1)
       expect(valid.vm).toHaveProperty('icon', 'github-o')
     })
+
+    it('should emit', () => {
+      const valid = mount(Input)
+
+      expect.assertions(9)
+      const vm = valid.vm as any
+      vm.onClick()
+      expect(valid.emitted().click).toBeTruthy()
+      vm.onFocus()
+      expect(valid.emitted().focus).toBeTruthy()
+      expect(vm).toHaveProperty('focused', true)
+      vm.onBlur()
+      expect(valid.emitted().blur).toBeTruthy()
+      expect(vm).toHaveProperty('focused', false)
+      vm.onChange()
+      expect(valid.emitted().change).toBeTruthy()
+      vm.onInput({ target: { value: 'toto' } })
+      expect(valid.emitted().input).toBeTruthy()
+      expect(valid.emitted().update).toBeTruthy()
+      expect(valid.emitted().input[0]).toEqual(['toto'])
+    })
+
+    it('should emit no-value', () => {
+      const valid = mount(Input)
+
+      expect.assertions(1)
+      const vm = valid.vm as any
+      vm.onInput(undefined)
+      expect(valid.emitted().update[0]).toEqual([''])
+    })
   })
 })
