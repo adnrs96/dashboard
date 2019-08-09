@@ -4,7 +4,7 @@
 [![Netlify Status](https://api.netlify.com/api/v1/badges/db988abe-5f0a-4ec5-8659-b1865035e9c9/deploy-status)](https://app.netlify.com/sites/musing-nobel-a05d19/deploys)
 [![CircleCI](https://circleci.com/gh/storyscript/dashboard.svg?style=svg)](https://circleci.com/gh/storyscript/dashboard)
 [![codecov](https://codecov.io/gh/storyscript/dashboard/branch/master/graph/badge.svg)](https://codecov.io/gh/storyscript/dashboard)
-[![Lighthouse](./lighthouse-badges/lighthouse.svg)](https://dashboard.storyscript.io)
+[![Lighthouse](./.lighthouse-badges/lighthouse.svg)](https://dashboard.storyscript.io)
 
 ## Project commands
 
@@ -60,10 +60,10 @@ $> docker-compose up -d   # Start all the containers in the right order
 
 ## Lighthouse Score
 
-[![Lighthouse](./lighthouse-badges/lighthouse-logo.svg)](https://github.com/GoogleChrome/lighthouse)
+[![Lighthouse](./.lighthouse-badges/lighthouse-logo.svg)](https://github.com/GoogleChrome/lighthouse)
 
-[![Lighthouse Accessibility Badge](./lighthouse-badges/lighthouse_accessibility.svg)](https://dashboard.storyscript.io)
-[![Lighthouse Best Practices Badge](./lighthouse-badges/lighthouse_best-practices.svg)](https://dashboard.storyscript.io)
-[![Lighthouse Performance Badge](./lighthouse-badges/lighthouse_performance.svg)](https://dashboard.storyscript.io)
-[![Lighthouse PWA Badge](./lighthouse-badges/lighthouse_pwa.svg)](https://dashboard.storyscript.io)
-[![Lighthouse SEO Badge](./lighthouse-badges/lighthouse_seo.svg)](https://dashboard.storyscript.io)
+[![Lighthouse Accessibility Badge](./.lighthouse-badges/lighthouse_accessibility.svg)](https://dashboard.storyscript.io)
+[![Lighthouse Best Practices Badge](./.lighthouse-badges/lighthouse_best-practices.svg)](https://dashboard.storyscript.io)
+[![Lighthouse Performance Badge](./.lighthouse-badges/lighthouse_performance.svg)](https://dashboard.storyscript.io)
+[![Lighthouse PWA Badge](./.lighthouse-badges/lighthouse_pwa.svg)](https://dashboard.storyscript.io)
+[![Lighthouse SEO Badge](./.lighthouse-badges/lighthouse_seo.svg)](https://dashboard.storyscript.io)
