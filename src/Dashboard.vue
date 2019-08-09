@@ -42,7 +42,12 @@ export default class Dashboard extends Vue {
 
   private async checkRoute (): Promise<void> {
     return new Promise(resolve => {
-      if (this.lock && (!this.$route.name || !this.$route.name.includes('new'))) {
+      if (this.lock &&
+        (
+          (!this.$route.name || !this.$route.name.includes('new')) ||
+          (this.$route.name && this.$route.name.includes('new') && (!this.$route.params || !this.$route.params.beginner))
+        )
+      ) {
         this.$router.replace({ name: 'new', params: { beginner: 'true' } }, () => {
           resolve()
         })

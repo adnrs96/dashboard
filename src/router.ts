@@ -17,6 +17,9 @@ export default new Router({
       }, {
         path: 'new/',
         component: () => import('@/views/Dashboard/Create/index.vue'),
+        props: (route) => ({
+          beginner: route.params.beginner === 'true'
+        }),
         children: [{
           path: '',
           name: 'new',
