@@ -41,7 +41,6 @@ describe('main::Dashboard.vue', () => {
       const vm = dashboard.vm as any
       const loggedIn = await vm.fetchUser()
       expect(loggedIn).toEqual(false)
-      expect(vm.initialized).toEqual(true)
       expect(store.getters.isUserLoggedIn).toEqual(false)
     })
   })
