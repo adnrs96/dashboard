@@ -61,9 +61,14 @@ import SInput from '@/components/Input.vue'
 export default class App extends Vue {
   private loading: boolean = false
 
-  private generateAwesomeWord () {
-    this.$apollo.query({ query: require('@/plugins/graphql/generateAwesomeWord.gql'), fetchPolicy: 'no-cache' }).then(res => {
-      this.name = (res && res.data && res.data.generateAwesomeWord) || ''
+  private async generateAwesomeWord () {
+    return new Promise(resolve => {
+      this.$apollo.query({ query: require('@/plugins/graphql/generateAwesomeWord.gql'), fetchPolicy: 'no-cache' }).then(res => {
+        this.name = (res && res.data && res.data.generateAwesomeWord) || ''
+        resolve()
+      }).catch(() => {
+        resolve()
+      })
     })
   }
 
@@ -78,29 +83,34 @@ export default class App extends Vue {
     setTimeout(() => { this.error = false }, 300)
   }
 
-  private create () {
-    if (!this.loading && !this.error) {
-      this.loading = true
-      if (this.name.trim().length === 0) {
-        this.error = true
-        this.loading = false
+  private async create () {
+    return new Promise(resolve => {
+      if (!this.loading && !this.error) {
+        this.loading = true
+        if (this.name.trim().length === 0) {
+          this.error = true
+          this.loading = false
+          resolve()
+        } else {
+          this.$apollo.mutate({ mutation: require('@/plugins/graphql/createApp.gql'), variables: { data: { app: { ownerUuid: this.getOwnerUuid, name: this.name.trim() } } } }).then(res => {
+            this.$router.push({ name: 'dashboard' })
+            this.loading = false
+            resolve()
+          }).catch((err) => {
+            if (err && err.graphQLErrors && err.graphQLErrors.length > 0 && err.graphQLErrors[0].constraint === 'apps_owner_uuid_name_key') {
+              // name is duplicate
+            } else {
+              // console.error(err.message)
+            }
+            this.error = true
+            this.loading = false
+            resolve()
+          })
+        }
       } else {
-        this.$apollo.mutate({ mutation: require('@/plugins/graphql/createApp.gql'), variables: { data: { app: { ownerUuid: this.getOwnerUuid, name: this.name.trim() } } } }).then(res => {
-          this.$router.push({ name: 'dashboard' })
-          this.loading = false
-        }).catch((err) => {
-          if (err && err.graphQLErrors && err.graphQLErrors.length > 0 && err.graphQLErrors[0].constraint === 'apps_owner_uuid_name_key') {
-            // name is duplicate
-            this.error = true
-          } else {
-            // unknown error
-            console.error(err.message)
-            this.error = true
-          }
-          this.loading = false
-        })
+        resolve()
       }
-    }
+    })
   }
 }
 </script>
