@@ -6,6 +6,7 @@
     ]"
   >
     <s-arrow
+      v-if="!beginner || $route.name !== 'new'"
       circled
       left
       prev
@@ -19,8 +20,17 @@
       center
       class="w-4/5 md:w-125 mt-5"
     >
-      <!-- ToDo Get the user name -->
-      Welcome to Storyscript, Jean Val JeanJean!
+      <owner v-if="beginner">
+        <s-text
+          slot-scope="{ owner: { username } }"
+          head="1"
+          weight="regular"
+          center
+          class="w-4/5 md:w-125 mt-5"
+        >
+          Welcome to Storyscript, {{ username }} !
+        </s-text>
+      </owner>
     </s-text>
     <router-view class="m-8" />
     <footer
@@ -87,19 +97,24 @@
 
 <script lang="ts">
 import { Component, Vue, Prop } from 'vue-property-decorator'
+import { Getter } from 'vuex-class'
 import SArrow from '@/components/Arrow.vue'
 import SText from '@/components/Text.vue'
 import SIcon from '@/components/Icon.vue'
+import Owner from '@/components/Owner.vue'
 
 @Component({
   name: 'Create',
   components: {
     SArrow,
     SText,
-    SIcon
+    SIcon,
+    Owner
   }
 })
 export default class Create extends Vue {
   @Prop({ type: Boolean, default: false }) private beginner!: boolean
+
+  @Getter('getUserName') private getUserName!: string
 }
 </script>

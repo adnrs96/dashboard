@@ -40,9 +40,11 @@ export default class Dashboard extends Vue {
   @Getter('getToken')
   private getGraphQLToken!: string | undefined
 
+  @Getter('getOwnerUuid')
+  private getOwnerUuid!: string
+
   private async checkRoute (): Promise<void> {
     return new Promise(resolve => {
-      console.log(this.$route)
       if (this.lock &&
         (
           (!this.$route.name || !this.$route.name.includes('new')) ||
@@ -99,6 +101,7 @@ export default class Dashboard extends Vue {
       if (isLoggedIn) {
         const client = this.$apollo && this.$apollo.provider && this.$apollo.provider.defaultClient
         await ApolloPlugin.onLogin(client as MyApolloClient<unknown>, this.getGraphQLToken)
+        const query = await this.$apollo.query({ query: require('@/plugins/graphql/owner.gql'), variables: { uuid: this.getOwnerUuid } })
         await this.checkApps()
       } else {
         this.initialized = true
