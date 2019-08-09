@@ -7,7 +7,8 @@
       `text-${color}`,
       `${fontSize}`,
       `${fontWeight}`,
-      `${letterSpacing}`
+      `${letterSpacing}`,
+      `${center ? 'text-center': ''}`
     ]"
   >
     <slot />
@@ -46,6 +47,8 @@ export default class Text extends Vue {
     default: 'black'
   }) readonly color !: string
 
+  @Prop({ type: Boolean, default: false }) readonly center!: boolean
+
   private get tag (): string {
     return this.span ? 'span' : this.li ? 'li' : this.head ? `h${this.head}` : 'p'
   }
@@ -76,10 +79,10 @@ export default class Text extends Vue {
     switch (this.p) {
       case '3':
       case '5':
-        return 'tracking-wide'
+        return 'tracking-wider'
       case '4':
       case '6':
-        return 'tracking-wider'
+        return 'tracking-wide'
       default:
         return 'tracking-normal'
     }

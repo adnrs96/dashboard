@@ -38,14 +38,28 @@ module.exports = {
         '10': '10px'
       },
       spacing: {
+        initial: 'initial',
         '1/2': '.125rem', // 2px
         '7/8': '.875rem', // 14px
-        '14': '3.5rem' // 56px
+        '7': '1.75rem',
+        '11': '2.75rem', // 44px
+        '14': '3.5rem', // 56px
+        '60': '15rem', // 240px
+        '62': '15.5rem', // 248px
+        '70': '17.5rem',
+        '80': '20rem',
+        '87': '21.75rem',
+        '90': '22.5rem',
+        '125': '31.25rem'
       },
       boxShadow: {
         avatar: '0 0 2px 0 rgba(0,0,0,0.2)',
         navbar: '0 3px 5px 0 rgba(0,30,79,0.05)',
-        input: '0px 3px 5px rgba(0, 0, 0, 0.05)'
+        input: '0px 3px 5px rgba(0, 0, 0, 0.05)',
+        card: '0px 5px 20px rgba(16, 22, 111, 0.05)'
+      },
+      inset: {
+        '14': '3.5rem'
       }
     },
     letterSpacing: {

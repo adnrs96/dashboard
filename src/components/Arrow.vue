@@ -1,18 +1,25 @@
 <template>
+  <!-- DOTO remove prop prev and emit click only --- parent component will manage what to do -->
   <div
-    :class="[`${rotate}`, `${circle}`]"
-    class="w-12 h-12 flex justify-center items-center hover:bg-gray-10 bg-white cursor-pointer"
+    :class="[
+      `${rotate}`,
+      `${circle}`,
+      `${hover ? 'hover:bg-gray-20' : ''}`,
+      `${circle ? 'w-12 h-12' : ''}`
+    ]"
+    class="flex justify-center items-center bg-transparent cursor-pointer"
+    @click="!prev ? $emit('click') : $router.go(-1) && $emit('click')"
   >
     <svg
-      class="fill-current text-gray-50 w-4 h-4"
-      width="16"
-      height="16"
+      class="fill-current w-4 h-4"
+      :width="w ? w : '16'"
+      :height="h ? h : '16'"
       viewBox="0 0 16 16"
       xmlns="http://www.w3.org/2000/svg"
     >
       <path
         d="M3.828 6.99968H16V8.99968H3.828L9.192 14.3637L7.778 15.7777L0 7.99968L7.778 0.22168L9.192 1.63568L3.828 6.99968Z"
-        fill="#7B8794"
+        :fill="color ? color : '#7B8794'"
       />
     </svg>
   </div>
@@ -49,6 +56,31 @@ export default class Arrow extends Vue {
     type: Boolean,
     default: false
   }) readonly right!: boolean
+
+  @Prop({
+    type: Boolean,
+    default: false
+  }) readonly prev!: boolean
+
+  @Prop({
+    type: String,
+    default: undefined
+  }) readonly color!: string
+
+  @Prop({
+    type: Boolean,
+    default: false
+  }) readonly hover!: boolean
+
+  @Prop({
+    type: String,
+    default: undefined
+  }) readonly w!: string | undefined
+
+  @Prop({
+    type: String,
+    default: undefined
+  }) readonly h!: string | undefined
 
   private get rotate (): string {
     return this.top && this.right

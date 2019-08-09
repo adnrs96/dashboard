@@ -1,0 +1,7 @@
+mutation ($data: CreateAppInput!) {
+  createApp(input: $data) {
+   app {
+      name
+    }
+  }
+}
