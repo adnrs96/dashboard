@@ -30,7 +30,7 @@
       </s-button>
     </div>
     <!-- eslint-disable-next-line vue/html-self-closing -->
-    <div class="hidden sm:block bg-gray-10 w-px self-stretch"></div>
+    <div class="hidden sm:block bg-indigo-10 w-px self-stretch"></div>
     <div class="flex flex-col justify-center items-center py-8 px-6 md:px-8 lg:px-10 w-11/12 md: md:w-3/4 xl:w-45-pcent">
       <s-text
         head="2"

@@ -2,7 +2,7 @@
   <div class="min-h-screen">
     <navbar @logout="logout" />
     <div>
-      <router-view class="min-h-screen-no-navbar bg-gray-10" />
+      <router-view class="min-h-screen-no-navbar" />
     </div>
   </div>
 </template>

@@ -1,7 +1,7 @@
 <template>
   <div>
     <apps-table />
-    <button @click="$router.push({ name: 'error' })">
+    <button @click="$router.push({ path: '404' })">
       click me
     </button>
   </div>

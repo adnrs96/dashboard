@@ -1,0 +1,22 @@
+.slide-left-enter-active,
+.slide-left-leave-active {
+  transition: transform 0.5s;
+  transform: translateX(0);
+  @apply absolute inset-0;
+}
+
+.slide-left-enter,
+.slide-left-leave-to {
+  transform: translateX(-100%);
+}
+
+.fade-enter-active,
+.fade-leave-active {
+  transition: opacity 0.5s;
+  @apply absolute inset-0;
+}
+
+.fade-enter,
+.fade-leave-to {
+  @apply opacity-0;
+}

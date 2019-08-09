@@ -1,17 +1,20 @@
 <template>
-  <div id="dashboard">
-    <transition-group name="fade">
-      <initializer
-        v-if="!initialized"
-        key="initializer"
-        :loaded="initialized"
-      />
-      <router-view
-        v-else
-        key="route"
-      />
-    </transition-group>
-  </div>
+  <transition-group
+    id="dashboard"
+    name="fade"
+    tag="div"
+  >
+    <initializer
+      v-if="!initialized || !isUserLoggedIn"
+      key="initializer"
+      :loaded="initialized"
+    />
+    <router-view
+      v-else
+      key="route"
+      class="min-h-screen bg-gray-10"
+    />
+  </transition-group>
 </template>
 
 <script lang="ts">
@@ -58,15 +61,14 @@ export default class Dashboard extends Vue {
 
   private async appsCount (): Promise<number> {
     const { data } = await this.$apollo.query({ query: require('@/plugins/graphql/allAppsCount.gql'), fetchPolicy: 'no-cache' })
-    console.log('apps count = ', data)
     return (data && data.allApps && data.allApps.totalCount) || 0
   }
 
   @Watch('$route')
   private async routeUpdated (newValue: Route, oldValue: Route) {
-    if (!oldValue.name || !oldValue.name.includes('new')) {
+    if (!oldValue.name || !newValue.name || newValue.name.includes('new')) {
       await this.checkRoute()
-    } else {
+    } else if (this.lock) {
       await this.checkApps()
     }
   }
@@ -94,19 +96,3 @@ export default class Dashboard extends Vue {
   }
 }
 </script>
-
-<style>
-.fade-enter-active,
-.fade-leave-active {
-  transition: opacity 0.5s;
-  position: absolute;
-  top: 0;
-  left: 0;
-  right: 0;
-  bottom: 0;
-}
-.fade-enter,
-.fade-leave-to {
-  opacity: 0;
-}
-</style>

@@ -85,20 +85,3 @@ export default class Initializer extends Vue {
   }
 }
 </script>
-
-<style>
-.slide-left-enter-active,
-.slide-left-leave-active {
-  transition: transform 0.5s;
-  transform: translateX(0);
-  position: absolute;
-  top: 0;
-  left: 0;
-  right: 0;
-  bottom: 0;
-}
-.slide-left-enter,
-.slide-left-leave-to {
-  transform: translateX(-100%);
-}
-</style>

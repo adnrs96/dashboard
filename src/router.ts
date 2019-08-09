@@ -11,10 +11,6 @@ export default new Router({
       path: '/',
       component: () => import('@/views/Dashboard/index.vue'),
       children: [{
-        path: '404',
-        name: 'error',
-        component: () => import('@/views/Dashboard/Overview.vue')
-      }, {
         path: '',
         name: 'dashboard',
         component: () => import('@/views/Dashboard/Overview.vue')
@@ -31,6 +27,10 @@ export default new Router({
           component: () => import('@/views/Dashboard/Create/App.vue')
         }]
       }]
+    },
+    {
+      path: '*',
+      component: () => import('@/views/NotFound.vue')
     }
   ]
 })
