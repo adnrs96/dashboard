@@ -24,7 +24,8 @@ module.exports = {
           '40': '#9AA5B1',
           '30': '#CBD2D9',
           '20': '#E4E7EB',
-          '10': '#F5F7FA'
+          '10': '#F5F7FA',
+          c6c6c6: '#C6C6C6'
         },
         green: {
           '50': '#2DCCA7'
@@ -40,12 +41,17 @@ module.exports = {
       spacing: {
         '1/2': '.125rem', // 2px
         '7/8': '.875rem', // 14px
-        '14': '3.5rem' // 56px
+        '14': '3.5rem', // 56px
+        '45-pcent': '45%'
       },
       boxShadow: {
         avatar: '0 0 2px 0 rgba(0,0,0,0.2)',
         navbar: '0 3px 5px 0 rgba(0,30,79,0.05)',
-        input: '0px 3px 5px rgba(0, 0, 0, 0.05)'
+        input: '0px 3px 5px rgba(0, 0, 0, 0.05)',
+        card: '0px 5px 20px rgba(16, 22, 111, 0.05)'
+      },
+      inset: {
+        '14': '3.5rem'
       }
     },
     letterSpacing: {

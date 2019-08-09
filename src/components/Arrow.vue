@@ -1,7 +1,8 @@
 <template>
   <div
     :class="[`${rotate}`, `${circle}`]"
-    class="w-12 h-12 flex justify-center items-center hover:bg-gray-10 bg-white cursor-pointer"
+    class="w-12 h-12 flex justify-center items-center hover:bg-gray-20 bg-transparent cursor-pointer"
+    @click="prev ? $router.go(-1) : $router.go(-1);$emit('arrow-click')"
   >
     <svg
       class="fill-current text-gray-50 w-4 h-4"
@@ -49,6 +50,11 @@ export default class Arrow extends Vue {
     type: Boolean,
     default: false
   }) readonly right!: boolean
+
+  @Prop({
+    type: Boolean,
+    default: false
+  }) readonly prev!: boolean
 
   private get rotate (): string {
     return this.top && this.right
