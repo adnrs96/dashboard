@@ -14,6 +14,25 @@
     >
       <path v-bind="path" />
     </svg>
+    <svg
+      v-else-if="isActive('dot')"
+      :class="[
+        classColor, 'fill-current',
+        { 'animate-wheel': loading === true }
+      ]"
+      width="6"
+      height="6"
+      viewBox="0 0 6 6"
+      fill="none"
+      xmlns="http://www.w3.org/2000/svg"
+    >
+      <circle
+        cx="3"
+        cy="3"
+        r="3"
+        fill="#D7DDFF"
+      />
+    </svg>
   </div>
 </template>
 
@@ -27,7 +46,13 @@ export default class Icon extends Vue {
   @Prop({
     type: String,
     required: true,
-    validator: x => ['github-o', 'gitlab-o', 'google-f', 'spinner'].includes(x)
+    validator: x => [
+      'github-o',
+      'gitlab-o',
+      'google-f',
+      'spinner',
+      'dot'
+    ].includes(x)
   }) readonly icon!: string
 
   @Prop({

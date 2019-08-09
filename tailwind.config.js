@@ -50,7 +50,8 @@ module.exports = {
         '70': '17.5rem',
         '80': '20rem',
         '87': '21.75rem',
-        '90': '22.5rem'
+        '90': '22.5rem',
+        '125': '31.25rem'
       },
       boxShadow: {
         avatar: '0 0 2px 0 rgba(0,0,0,0.2)',
