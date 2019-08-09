@@ -10,8 +10,7 @@
 <script lang="ts">
 import { Component, Vue, Watch } from 'vue-property-decorator'
 import Navbar from '@/components/Navbar.vue'
-import { Action, Getter } from 'vuex-class'
-import { Route } from 'vue-router'
+import { Action } from 'vuex-class'
 
 @Component({
   name: 'Dashboard',

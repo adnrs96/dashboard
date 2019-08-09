@@ -8,14 +8,14 @@ localVue.use(Vuex)
 
 describe('Dashboard.vue', () => {
   let store: Store<unknown>
-  let getters
+  let actions
 
   beforeEach(() => {
-    getters = {
-      getOwnerUuid: jest.fn()
+    actions = {
+      logoutUser: jest.fn().mockResolvedValue(true)
     }
     store = new Vuex.Store({
-      getters
+      actions
     })
   })
 

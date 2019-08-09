@@ -40,7 +40,7 @@ export default class Dashboard extends Vue {
   @Getter('getToken')
   private getGraphQLToken!: string | undefined
 
-  private async checkRoute () {
+  private async checkRoute (): Promise<void> {
     return new Promise(resolve => {
       if (this.lock && (!this.$route.name || !this.$route.name.includes('new'))) {
         this.$router.replace({ name: 'new', params: { beginner: 'true' } }, () => {
@@ -52,7 +52,7 @@ export default class Dashboard extends Vue {
     })
   }
 
-  private async checkApps () {
+  private async checkApps (): Promise<void> {
     this.initialized = false
     this.lock = await this.appsCount() === 0
     await this.checkRoute()
@@ -60,8 +60,8 @@ export default class Dashboard extends Vue {
   }
 
   private async appsCount (): Promise<number> {
-    const { data } = await this.$apollo.query({ query: require('@/plugins/graphql/allAppsCount.gql'), fetchPolicy: 'no-cache' })
-    return (data && data.allApps && data.allApps.totalCount) || 0
+    const query = await this.$apollo.query({ query: require('@/plugins/graphql/allAppsCount.gql'), fetchPolicy: 'no-cache' })
+    return (query && query.data && query.data.allApps && query.data.allApps.totalCount) || 0
   }
 
   @Watch('$route')
