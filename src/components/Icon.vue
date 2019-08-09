@@ -59,10 +59,6 @@ export default class Icon extends Vue {
     default: false
   }) readonly clickable!: boolean
 
-  private isActive (icon: string): boolean {
-    return this.icon === icon
-  }
-
   private get classColor (): string {
     return this.color === 'white' ? 'text-white' : this.color === 'black' ? 'text-black' : this.color === 'neutral' ? 'text-gray-50' : ''
   }
