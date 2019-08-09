@@ -7,7 +7,7 @@
       'border',
       'border-solid',
       'rounded-10',
-      'shadow-input',
+      `shadow-${focused ? 'outline' : 'input'}`,
       'h-14',
       'flex',
       'items-center',
@@ -25,7 +25,6 @@
         'bg-transparent',
         'w-full',
         'focus:outline-none',
-        'focus:shadow-outline',
         'rounded-10'
       ]"
       :type="type"
@@ -36,19 +35,22 @@
       :required="required"
       :readonly="readonly"
       :autocomplete="autocomplete"
+      v-on="listeners"
     >
     <s-icon
       v-if="!icon && loading"
       icon="spinner"
       color="neutral"
       :loading="loading"
-      @click="$emit('icon-click') "
+      :clickable="iconIsClickable"
+      @click="$emit('icon-click')"
     />
     <s-icon
       v-else-if="icon"
       :loading="loading"
       :icon="icon"
-      @click="$emit('icon-click') "
+      :clickable="iconIsClickable"
+      @click="$emit('icon-click')"
     />
   </div>
 </template>
@@ -126,6 +128,11 @@ export default class Input extends Vue {
     default: false
   }) readonly autocomplete!: boolean
 
+  @Prop({
+    type: Boolean,
+    default: false
+  }) readonly iconIsClickable!: boolean
+
   private get validationBorder (): string {
     switch (this.valid) {
       case true:
@@ -136,6 +143,41 @@ export default class Input extends Vue {
       default:
         return 'border-gray-50'
     }
+  }
+  private focused: boolean = false
+
+  private get listeners () : object {
+    return {
+      blur: this.onBlur,
+      change: this.onChange,
+      click: this.onClick,
+      focus: this.onFocus,
+      input: this.onInput
+    }
+  }
+
+  private onClick (e:any) {
+    this.$emit('click', e)
+  }
+
+  private onBlur (e:any) {
+    this.focused = false
+    this.$emit('blur', e)
+  }
+
+  private onFocus (e:any) {
+    this.focused = true
+    this.$emit('focus', e)
+  }
+
+  private onInput (e:any) {
+    const val = e.target.value || ''
+    this.$emit('update', val)
+    this.$emit('input', val)
+  }
+
+  private onChange (e:any) {
+    this.$emit('change', e)
   }
 }
 </script>

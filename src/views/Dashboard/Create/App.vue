@@ -10,17 +10,21 @@
       </s-text>
       <div class="w-56 h-48 bg-gray-c6c6c6 mb-11" />
       <s-input
+        v-model="name"
         placeholder="Enter an app name"
         class="w-full mb-4"
+        :class="[{ 'animate-shake': error }]"
+        :valid="error === true ? !error : undefined"
         icon="spinner"
         :loading="loading"
+        icon-is-clickable
+        @icon-click="generateAwesomeWord()"
       />
       <s-button
         primary
         center
         class="mb-5 w-full"
-        :icon="loading ? 'spinner' : ''"
-        :loading="loading"
+        @click="create"
       >
         Create your first app
       </s-button>
@@ -35,7 +39,8 @@
 </template>
 
 <script lang="ts">
-import { Component, Vue } from 'vue-property-decorator'
+import { Component, Vue, Watch } from 'vue-property-decorator'
+import { Getter } from 'vuex-class'
 import SText from '@/components/Text.vue'
 import SButton from '@/components/Button.vue'
 import SInput from '@/components/Input.vue'
@@ -49,15 +54,48 @@ import SInput from '@/components/Input.vue'
   }
 })
 export default class App extends Vue {
-  private readonly _loading: boolean
+  private loading: boolean = false
 
-  constructor () {
-    super()
-    this._loading = false
+  private generateAwesomeWord () {
+    this.$apollo.query({ query: require('@/plugins/graphql/generateAwesomeWord.gql'), fetchPolicy: 'no-cache' }).then(res => {
+      this.name = (res && res.data && res.data.generateAwesomeWord) || ''
+    })
   }
 
-  private get loading (): boolean {
-    return this._loading
+  @Getter('getOwnerUuid')
+  private getOwnerUuid!: string
+
+  private name: string = ''
+  private error: boolean = false
+
+  @Watch('error')
+  private onErrorChange () {
+    setTimeout(() => { this.error = false }, 300)
+  }
+
+  private create () {
+    if (!this.loading && !this.error) {
+      this.loading = true
+      if (this.name.trim().length === 0) {
+        this.error = true
+        this.loading = false
+      } else {
+        this.$apollo.mutate({ mutation: require('@/plugins/graphql/createApp.gql'), variables: { data: { app: { ownerUuid: this.getOwnerUuid, name: this.name.trim() } } } }).then(res => {
+          this.$router.push({ name: 'dashboard' })
+          this.loading = false
+        }).catch((err) => {
+          if (err && err.graphQLErrors && err.graphQLErrors.length > 0 && err.graphQLErrors[0].constraint === 'apps_owner_uuid_name_key') {
+            // name is duplicate
+            this.error = true
+          } else {
+            // unknown error
+            console.error(err.message)
+            this.error = true
+          }
+          this.loading = false
+        })
+      }
+    }
   }
 }
 </script>
