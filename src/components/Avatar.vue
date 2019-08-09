@@ -11,7 +11,7 @@
         <img
           v-if="data && data.ownerByUuid && data.ownerByUuid.profileImageUrl"
           :src="`${data.ownerByUuid.profileImageUrl}?s=64`"
-          alt="User's github avatar"
+          alt="User's avatar"
           class="h-10 w-10 rounded-full border-white border border-solid shadow-avatar"
         >
         <img

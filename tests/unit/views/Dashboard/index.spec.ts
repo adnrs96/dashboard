@@ -20,7 +20,13 @@ describe('Dashboard.vue', () => {
   })
 
   it('should display an HelloWorld message', () => {
-    const dashboard = shallowMount(Dashboard, { store, localVue })
+    const dashboard = shallowMount(Dashboard, {
+      store,
+      localVue,
+      stubs: {
+        RouterView: '<div id="router" />'
+      }
+    })
     expect(dashboard.html()).toBeTruthy()
   })
 })

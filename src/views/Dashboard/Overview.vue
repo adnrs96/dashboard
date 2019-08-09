@@ -17,9 +17,5 @@ import AppsTable from '@/components/AppsTable.vue'
     AppsTable
   }
 })
-export default class Overview extends Vue {
-  mounted () {
-    console.log('overview mounted')
-  }
-}
+export default class Overview extends Vue {}
 </script>

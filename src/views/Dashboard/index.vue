@@ -21,9 +21,5 @@ import { Route } from 'vue-router'
 })
 export default class Dashboard extends Vue {
   @Action('logoutUser') private logout!: () => Promise<boolean>
-
-  mounted () {
-    console.log('dashboard mounted')
-  }
 }
 </script>

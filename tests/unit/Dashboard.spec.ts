@@ -18,7 +18,12 @@ describe('main::Dashboard.vue', () => {
 
   beforeEach(() => {
     store = new Vuex.Store(User)
-    router = new VueRouter({})
+    router = new VueRouter({
+      routes: [{
+        name: 'new',
+        path: ''
+      }]
+    })
   })
 
   describe('user is a visitor', () => {
@@ -48,17 +53,20 @@ describe('main::Dashboard.vue', () => {
           $apollo: {
             provider: {
               defaultClient: jest.fn()
-            }
+            },
+            query: jest.fn()
           }
         }
       })
     })
 
-    it('should be loggedIn', () => {
+    it('should be loggedIn', async () => {
       expect.assertions(5)
       expect(dash.html()).toBeTruthy()
       expect(store.getters.isUserLoggedIn).toEqual(true)
-
+      const vm = dash.vm as any
+      vm.appsCount = jest.fn().mockResolvedValue(0)
+      await vm.checkApps()
       dash.vm.$nextTick(() => {
         expect(dash.vm).toHaveProperty('initialized', true)
         expect(dash.vm).toHaveProperty('getGraphQLToken', 'token')
@@ -66,12 +74,15 @@ describe('main::Dashboard.vue', () => {
       })
     })
 
-    it('should not be loggedIn anymore', () => {
+    it('should not be loggedIn anymore', async () => {
       expect.assertions(5)
       expect(store.getters.isUserLoggedIn).toEqual(true)
       store.commit('setUser', { ownerUuid: undefined, token: undefined })
       expect(store.getters.isUserLoggedIn).toEqual(false)
       expect(store.getters.getToken).toEqual(undefined)
+      const vm = dash.vm as any
+      vm.appsCount = jest.fn().mockResolvedValue(0)
+      await vm.checkRoute()
       dash.vm.$nextTick(() => {
         expect(dash.vm).toHaveProperty('getGraphQLToken', undefined)
         expect(dash.vm).toHaveProperty('initialized', true)
