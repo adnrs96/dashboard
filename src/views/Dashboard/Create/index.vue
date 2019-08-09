@@ -36,8 +36,9 @@
         Are you looking for help?
       </s-text>
       <a
-        href="http://"
-        class="flex items-center mb-2 md:mb-0"
+        href="https://docs.storyscript.io/"
+        target="_blank"
+        class="flex items-center mb-2 md:mb-0 hover:underline text-indigo-50"
       >
         <s-text
           p="3"
@@ -60,8 +61,9 @@
         class="ml-7 mr-6 hidden md:block"
       />
       <a
-        href="http://"
-        class="flex items-center mb-2 md:mb-0"
+        href="https://storyscript.io/contact"
+        target="_blank"
+        class="flex items-center mb-2 md:mb-0 hover:underline text-indigo-50"
       >
         <s-text
           p="3"
