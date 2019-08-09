@@ -2,7 +2,7 @@
   <div
     class="flex flex-col items-center"
     :class="[
-      `${beginner ? 'justify-center': 'justify-start'}`
+      `${beginner ? 'justify-center': 'justify-start md:justify-center'}`
     ]"
   >
     <s-arrow
