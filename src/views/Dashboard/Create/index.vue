@@ -1,5 +1,5 @@
 <template>
-  <div class="flex flex-col items-start md:items-center justify-center">
+  <div class="flex flex-col items-center justify-center">
     <s-arrow
       circled
       left
@@ -12,7 +12,7 @@
       head="1"
       weight="regular"
       center
-      class="w-125"
+      class="w-4/5 md:w-125 mt-5"
     >
       <!-- ToDo Get the user name -->
       Welcome to Storyscript, Jean Val JeanJean!
@@ -20,19 +20,19 @@
     <router-view class="m-8" />
     <footer
       v-if="beginner"
-      class="flex items-center"
+      class="flex flex-col md:flex-row items-center mb-5"
     >
       <s-text
         p="3"
         weight="semibold"
         center
-        class="mr-12"
+        class="md:mr-12 mb-2 md:mb-0"
       >
         Are you looking for help?
       </s-text>
       <a
         href="http://"
-        class="flex items-center"
+        class="flex items-center mb-2 md:mb-0"
       >
         <s-text
           p="3"
@@ -52,11 +52,11 @@
       </a>
       <s-icon
         icon="dot"
-        class="ml-7 mr-6"
+        class="ml-7 mr-6 hidden md:block"
       />
       <a
         href="http://"
-        class="flex items-center"
+        class="flex items-center mb-2 md:mb-0"
       >
         <s-text
           p="3"
@@ -93,7 +93,6 @@ import SIcon from '@/components/Icon.vue'
   }
 })
 export default class Create extends Vue {
-  // ToDo replace true by false
-  @Prop({ type: Boolean, default: true }) private beginner!: boolean
+  @Prop({ type: Boolean, default: false }) private beginner!: boolean
 }
 </script>
