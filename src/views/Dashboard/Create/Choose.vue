@@ -20,7 +20,7 @@
       >
         App
       </s-text>
-      <div class="bg-gray-c6c6c6 pt-6 pb-5 px-5 mb-6">
+      <div class="pt-6 pb-5 px-5 mb-6">
         <img
           src="@/assets/img/illustrations/clip-bad-gateaway.svg"
           alt="Create new app illustration"

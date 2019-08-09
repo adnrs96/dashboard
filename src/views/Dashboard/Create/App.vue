@@ -8,7 +8,12 @@
       >
         Create App
       </s-text>
-      <div class="w-56 h-48 bg-gray-c6c6c6 mb-11" />
+      <div class="pt-6 pb-5 px-5 mb-6">
+        <img
+          src="@/assets/img/illustrations/clip-bad-gateaway.svg"
+          alt="Create new app illustration"
+        >
+      </div>
       <s-input
         v-model="name"
         placeholder="Enter an app name"

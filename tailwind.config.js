@@ -24,8 +24,7 @@ module.exports = {
           '40': '#9AA5B1',
           '30': '#CBD2D9',
           '20': '#E4E7EB',
-          '10': '#F5F7FA',
-          c6c6c6: '#C6C6C6'
+          '10': '#F5F7FA'
         },
         green: {
           '50': '#2DCCA7'
