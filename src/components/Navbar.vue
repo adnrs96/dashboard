@@ -1,6 +1,9 @@
 <template>
   <nav class="flex items-center flex-no-wrap bg-white px-6 h-14 shadow-navbar border-solid border-b border-gray-20">
-    <div class="flex items-center mr-6">
+    <div
+      class="flex items-center mr-6 cursor-pointer"
+      @click="$router.push({ name: 'dashboard' })"
+    >
       <s-logo
         icon
         class="h-6 w-6"
@@ -12,7 +15,10 @@
     </div>
     <div class="flex items-center flex-grow">
       <div class="text-sm flex-grow" />
-      <avatar />
+      <avatar
+        class="cursor-pointer"
+        @click="$emit('logout')"
+      />
     </div>
   </nav>
 </template>

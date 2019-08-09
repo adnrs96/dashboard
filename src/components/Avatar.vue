@@ -4,7 +4,10 @@
     :variables="{ uuid: getOwnerUuid }"
   >
     <template slot-scope="{ result: { data } }">
-      <div class="w-10">
+      <div
+        class="w-10"
+        @click="$emit('click')"
+      >
         <img
           v-if="data && data.ownerByUuid && data.ownerByUuid.profileImageUrl"
           :src="`${data.ownerByUuid.profileImageUrl}?s=64`"

@@ -12,6 +12,10 @@ export default new Router({
       path: '/',
       component: () => import('@/views/Dashboard/index.vue'),
       children: [{
+        path: '404',
+        name: 'error',
+        component: () => import('@/views/Dashboard/Overview.vue')
+      }, {
         path: '',
         name: 'dashboard',
         component: () => import('@/views/Dashboard/Overview.vue')

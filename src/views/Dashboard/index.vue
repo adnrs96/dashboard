@@ -8,10 +8,10 @@
 </template>
 
 <script lang="ts">
-import { Component, Vue } from 'vue-property-decorator'
+import { Component, Vue, Watch } from 'vue-property-decorator'
 import Navbar from '@/components/Navbar.vue'
-import axios from 'axios'
 import { Action, Getter } from 'vuex-class'
+import { Route } from 'vue-router'
 
 @Component({
   name: 'Dashboard',
@@ -21,5 +21,9 @@ import { Action, Getter } from 'vuex-class'
 })
 export default class Dashboard extends Vue {
   @Action('logoutUser') private logout!: () => Promise<boolean>
+
+  mounted () {
+    console.log('dashboard mounted')
+  }
 }
 </script>

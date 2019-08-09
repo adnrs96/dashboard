@@ -1,5 +1,10 @@
 <template>
-  <apps-table />
+  <div>
+    <apps-table />
+    <button @click="$router.push({ name: 'error' })">
+      click me
+    </button>
+  </div>
 </template>
 
 <script lang="ts">
@@ -12,5 +17,9 @@ import AppsTable from '@/components/AppsTable.vue'
     AppsTable
   }
 })
-export default class Overview extends Vue { }
+export default class Overview extends Vue {
+  mounted () {
+    console.log('overview mounted')
+  }
+}
 </script>
