@@ -146,7 +146,7 @@ export default class Input extends Vue {
   }
   private focused: boolean = false
 
-  private get listeners () : object {
+  private get listeners (): object {
     return {
       blur: this.onBlur,
       change: this.onChange,
@@ -156,27 +156,27 @@ export default class Input extends Vue {
     }
   }
 
-  private onClick (e:any) {
+  private onClick (e: any) {
     this.$emit('click', e)
   }
 
-  private onBlur (e:any) {
+  private onBlur (e: any) {
     this.focused = false
     this.$emit('blur', e)
   }
 
-  private onFocus (e:any) {
+  private onFocus (e: any) {
     this.focused = true
     this.$emit('focus', e)
   }
 
-  private onInput (e:any) {
-    const val = e.target.value || ''
+  private onInput (e: any) {
+    const val = (e && e.target && e.target.value) || ''
     this.$emit('update', val)
     this.$emit('input', val)
   }
 
-  private onChange (e:any) {
+  private onChange (e: any) {
     this.$emit('change', e)
   }
 }
