@@ -8,7 +8,7 @@
       `${circle ? 'w-12 h-12' : ''}`
     ]"
     class="flex justify-center items-center bg-transparent cursor-pointer"
-    @click="prev ? $router.go(-1) : $router.go(-1);$emit('arrow-click')"
+    @click="!prev ? $emit('arrow-click') : $router.go(-1);$emit('arrow-click')"
   >
     <svg
       class="fill-current w-4 h-4"
